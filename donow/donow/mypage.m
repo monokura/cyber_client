@@ -8,12 +8,16 @@
 
 #import "mypage.h"
 
+
 @interface mypage ()
 
 @end
 
 @implementation mypage{
     NSArray *myflashcard;//セル表示用配列
+    int destination;
+      IBOutlet __weak UITableView *_tableView;
+    __strong NSMutableArray *_rows;
 }
 /*初期コード１/////////////////////////////////////////////
 - (id)initWithStyle:(UITableViewStyle)style
@@ -26,11 +30,31 @@
 }
 *//////////////////////////////////////////////////////////
 
+- (id)init
+{
+    self = [super initWithNibName:@"STSelectCellViewController" bundle:nil];
+    if (self) {
+        self.title = @"Select Cell";
+        
+        _rows = [NSMutableArray arrayWithCapacity:100];
+        for (int i = 0; i < 100; i++) {
+            NSString *title = [NSString stringWithFormat:@"Item %d", i];
+            [_rows addObject:title];
+        }
+    }
+    return self;
+}
+
+
+
 
 - (void)viewDidLoad
 {
     //セルに表示するテキストを配列に格納
-    myflashcard = [[NSArray alloc]initWithObjects:@"単語帳1",@"単語帳2",@"単語帳3",nil];      //未初期化
+    myflashcard = [[NSArray alloc]initWithObjects:@"新規作成",@"単語帳1",@"単語帳2",@"単語帳3",@"単語帳4",@"単語帳5",@"単語帳6",@"単語帳7",@"単語帳8",@"単語帳9",@"単語帳10",@"単語帳11",@"単語帳12",nil];      //未初期化
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+
 }
 
 
@@ -57,8 +81,13 @@
 {
     //配列の要素数だけセルを設定
     return [myflashcard count];
+//    return _rows.count;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [_tableView deselectRowAtIndexPath:_tableView.indexPathForSelectedRow animated:YES];
+}
 
 
 
@@ -68,13 +97,18 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;   //セルの右側に"＞"をつける
+        
     }
     
     // セルに表示する文字を設定
+    NSString *title = [_rows objectAtIndex:indexPath.row];
     cell.textLabel.text = [myflashcard objectAtIndex:indexPath.row];
     
     return cell;
 }
+
+
 
 /*初期コード３/////////////////////////////////////////////
 // Override to support conditional editing of the table view.
@@ -115,10 +149,27 @@
 }
 */////////////////////////////////////////////////////
 
+
+
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    NSString *title = [_rows objectAtIndex:indexPath.row];
+    NSString *title = [myflashcard objectAtIndex:indexPath.row];
+    
+    if([title isEqualToString:@"新規作成"])
+    {
+        UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newflashcard"];
+        [self presentViewController:viewController animated:YES completion:nil];
+    
+    }else{
+    
+    UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
+    [self presentViewController:viewController animated:YES completion:nil];
+    
+    }
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
