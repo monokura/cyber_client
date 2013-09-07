@@ -67,7 +67,7 @@
             </objects>
             <point key="canvasLocation" x="-46" y="287"/>
         </scene>
-        <!--Group - Root View Controller-->
+        <!--Group-->
         <scene sceneID="FAh-pL-ESW">
             <objects>
                 <tableViewController id="nfz-wG-kP9" customClass="group" sceneMemberID="viewController">
@@ -87,7 +87,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="2Nh-eE-ZFR"/>
+                    <navigationItem key="navigationItem" id="2Nh-eE-ZFR"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbg-at-ht9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -109,7 +109,7 @@
             </objects>
             <point key="canvasLocation" x="905" y="585"/>
         </scene>
-        <!--Mypage - Root View Controller-->
+        <!--Mypage-->
         <scene sceneID="a7j-dJ-LaC">
             <objects>
                 <tableViewController id="Chx-2N-bXN" customClass="mypage" sceneMemberID="viewController">
@@ -129,7 +129,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="K73-V2-sOF"/>
+                    <navigationItem key="navigationItem" id="K73-V2-sOF"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xMs-z1-C1R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -171,23 +171,6 @@
             <point key="canvasLocation" x="358" y="287"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="group" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/group.h"/>
-        </class>
-        <class className="login" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/login.h"/>
-            <relationships>
-                <relationship kind="action" name="button_login:" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="mypage" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/mypage.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

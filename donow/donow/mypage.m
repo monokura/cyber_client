@@ -12,8 +12,10 @@
 
 @end
 
-@implementation mypage
-
+@implementation mypage{
+    NSArray *myflashcard;//セル表示用配列
+}
+/*初期コード１/////////////////////////////////////////////
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -22,18 +24,17 @@
     }
     return self;
 }
+*//////////////////////////////////////////////////////////
+
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //セルに表示するテキストを配列に格納
+    myflashcard = [[NSArray alloc]initWithObjects:@"単語帳1",@"単語帳2",@"単語帳3",nil];      //未初期化
 }
 
+
+/*初期コード２///////////////////////////////////////////////
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -48,13 +49,18 @@
     // Return the number of sections.
     return 0;
 }
+*/////////////////////////////////////////////////////////
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    //配列の要素数だけセルを設定
+    return [myflashcard count];
 }
+
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -64,21 +70,22 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...
+    // セルに表示する文字を設定
+    cell.textLabel.text = [myflashcard objectAtIndex:indexPath.row];
     
     return cell;
 }
 
-/*
+/*初期コード３/////////////////////////////////////////////
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
+*//////////////////////////////////////////////////////
 
-/*
+/*初期コード4////////////////////////////////////////////
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -90,23 +97,23 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+*/////////////////////////////////////////////////////
 
-/*
+/*初期コード５//////////////////////////////////////////
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
 }
-*/
+*/////////////////////////////////////////////////////
 
-/*
+/*初期コード６//////////////////////////////////////////
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
+*/////////////////////////////////////////////////////
 
 #pragma mark - Table view delegate
 
