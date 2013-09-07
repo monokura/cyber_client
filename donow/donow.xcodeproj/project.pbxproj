@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		431BDC6D17DAE2A800937886 /* login.m in Sources */ = {isa = PBXBuildFile; fileRef = 431BDC6B17DAE2A800937886 /* login.m */; };
 		431BDC6E17DAE2A800937886 /* login.xib in Resources */ = {isa = PBXBuildFile; fileRef = 431BDC6C17DAE2A800937886 /* login.xib */; };
+		431BDC7217DAE6A200937886 /* mypage.m in Sources */ = {isa = PBXBuildFile; fileRef = 431BDC7017DAE6A200937886 /* mypage.m */; };
+		431BDC7317DAE6A200937886 /* mypage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 431BDC7117DAE6A200937886 /* mypage.xib */; };
+		431BDC7717DAE6E300937886 /* group.m in Sources */ = {isa = PBXBuildFile; fileRef = 431BDC7517DAE6E300937886 /* group.m */; };
+		431BDC7817DAE6E300937886 /* group.xib in Resources */ = {isa = PBXBuildFile; fileRef = 431BDC7617DAE6E300937886 /* group.xib */; };
 		C3E094A517D9E89100E7EB94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E094A417D9E89100E7EB94 /* UIKit.framework */; };
 		C3E094A717D9E89100E7EB94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E094A617D9E89100E7EB94 /* Foundation.framework */; };
 		C3E094A917D9E89100E7EB94 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E094A817D9E89100E7EB94 /* CoreGraphics.framework */; };
@@ -26,6 +30,12 @@
 		431BDC6A17DAE2A800937886 /* login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = login.h; sourceTree = "<group>"; };
 		431BDC6B17DAE2A800937886 /* login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = login.m; sourceTree = "<group>"; };
 		431BDC6C17DAE2A800937886 /* login.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = login.xib; sourceTree = "<group>"; };
+		431BDC6F17DAE6A200937886 /* mypage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mypage.h; sourceTree = "<group>"; };
+		431BDC7017DAE6A200937886 /* mypage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mypage.m; sourceTree = "<group>"; };
+		431BDC7117DAE6A200937886 /* mypage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mypage.xib; sourceTree = "<group>"; };
+		431BDC7417DAE6E300937886 /* group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = group.h; sourceTree = "<group>"; };
+		431BDC7517DAE6E300937886 /* group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = group.m; sourceTree = "<group>"; };
+		431BDC7617DAE6E300937886 /* group.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = group.xib; sourceTree = "<group>"; };
 		C3E094A117D9E89100E7EB94 /* donow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E094A417D9E89100E7EB94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3E094A617D9E89100E7EB94 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,6 +98,7 @@
 		C3E094AA17D9E89100E7EB94 /* donow */ = {
 			isa = PBXGroup;
 			children = (
+				C3E094BC17D9E89100E7EB94 /* MainStoryboard_iPhone.storyboard */,
 				C3E094B317D9E89100E7EB94 /* AppDelegate.h */,
 				C3E094B417D9E89100E7EB94 /* AppDelegate.m */,
 				431BDC6A17DAE2A800937886 /* login.h */,
@@ -95,7 +106,12 @@
 				431BDC6C17DAE2A800937886 /* login.xib */,
 				C3E094C217D9E89100E7EB94 /* ViewController.h */,
 				C3E094C317D9E89100E7EB94 /* ViewController.m */,
-				C3E094BC17D9E89100E7EB94 /* MainStoryboard_iPhone.storyboard */,
+				431BDC7417DAE6E300937886 /* group.h */,
+				431BDC7517DAE6E300937886 /* group.m */,
+				431BDC7617DAE6E300937886 /* group.xib */,
+				431BDC6F17DAE6A200937886 /* mypage.h */,
+				431BDC7017DAE6A200937886 /* mypage.m */,
+				431BDC7117DAE6A200937886 /* mypage.xib */,
 				C3E094AB17D9E89100E7EB94 /* Supporting Files */,
 			);
 			path = donow;
@@ -171,6 +187,8 @@
 				C3E094BB17D9E89100E7EB94 /* Default-568h@2x.png in Resources */,
 				C3E094BE17D9E89100E7EB94 /* MainStoryboard_iPhone.storyboard in Resources */,
 				431BDC6E17DAE2A800937886 /* login.xib in Resources */,
+				431BDC7317DAE6A200937886 /* mypage.xib in Resources */,
+				431BDC7817DAE6E300937886 /* group.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +203,8 @@
 				C3E094B517D9E89100E7EB94 /* AppDelegate.m in Sources */,
 				C3E094C417D9E89100E7EB94 /* ViewController.m in Sources */,
 				431BDC6D17DAE2A800937886 /* login.m in Sources */,
+				431BDC7217DAE6A200937886 /* mypage.m in Sources */,
+				431BDC7717DAE6E300937886 /* group.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
