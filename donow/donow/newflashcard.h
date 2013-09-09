@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface newflashcard : UIViewController
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationbar;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationitem;
+- (IBAction)to_choice_group:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *grouplabel;
+- (IBAction)to_choice_word:(id)sender;
+- (IBAction)makeflashcard:(id)sender;
 
 @end

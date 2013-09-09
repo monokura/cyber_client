@@ -1,4 +1,4 @@
-//
+///Users/techcamp/cyber_client/donow/donow/mypage.m
 //  mypage.m
 //  donow
 //
@@ -7,7 +7,7 @@
 //
 
 #import "mypage.h"
-
+#import "newflashcard.h"
 
 @interface mypage ()
 
@@ -16,9 +16,8 @@
 @implementation mypage{
     NSArray *myflashcard;//セル表示用配列
     int destination;
-      IBOutlet __weak UITableView *_tableView;
-    __strong NSMutableArray *_rows;
-}
+//      IBOutlet  UITableView *_tableView;
+     }
 /*初期コード１/////////////////////////////////////////////
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,12 +35,13 @@
     if (self) {
         self.title = @"Select Cell";
         
-        _rows = [NSMutableArray arrayWithCapacity:100];
+/*        _rows = [NSMutableArray arrayWithCapacity:100];
         for (int i = 0; i < 100; i++) {
             NSString *title = [NSString stringWithFormat:@"Item %d", i];
             [_rows addObject:title];
+ 
         }
-    }
+ */   }
     return self;
 }
 
@@ -52,8 +52,8 @@
 {
     //セルに表示するテキストを配列に格納
     myflashcard = [[NSArray alloc]initWithObjects:@"新規作成",@"単語帳1",@"単語帳2",@"単語帳3",@"単語帳4",@"単語帳5",@"単語帳6",@"単語帳7",@"単語帳8",@"単語帳9",@"単語帳10",@"単語帳11",@"単語帳12",nil];      //未初期化
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
+ //   _tableView.dataSource = self;
+ //   _tableView.delegate = self;
 
 }
 
@@ -86,7 +86,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [_tableView deselectRowAtIndexPath:_tableView.indexPathForSelectedRow animated:YES];
+//    [_tableView deselectRowAtIndexPath:_tableView.indexPathForSelectedRow animated:YES];
 }
 
 
@@ -102,7 +102,7 @@
     }
     
     // セルに表示する文字を設定
-    NSString *title = [_rows objectAtIndex:indexPath.row];
+ //   NSString *title = [_rows objectAtIndex:indexPath.row];
     cell.textLabel.text = [myflashcard objectAtIndex:indexPath.row];
     
     return cell;
@@ -158,18 +158,25 @@
 {
 //    NSString *title = [_rows objectAtIndex:indexPath.row];
     NSString *title = [myflashcard objectAtIndex:indexPath.row];
+    UIViewController *viewController = nil;
     
     if([title isEqualToString:@"新規作成"])
     {
-        UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newflashcard"];
-        [self presentViewController:viewController animated:YES completion:nil];
+        
+        viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newflashcard"];
+        //UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newflashcard"];
+        //[self presentViewController:viewController animated:YES completion:nil];
+        //[self.navigationController pushViewController:viewController animated:YES];
     
     }else{
-    
-    UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
-    [self presentViewController:viewController animated:YES completion:nil];
+        viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flashcard"];
+    //UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flashcard"];
+    //[self presentViewController:viewController animated:YES completion:nil];
     
     }
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+    
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
