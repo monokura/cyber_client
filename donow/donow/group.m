@@ -13,7 +13,7 @@
 @end
 
 @implementation group{
-    NSArray *myflashcard;//セル表示用配列
+    NSMutableArray *myflashcard;//セル表示用配列
 }
 /*初期コード１/////////////////////////////////////////////
  - (id)initWithStyle:(UITableViewStyle)style
@@ -30,7 +30,11 @@
 - (void)viewDidLoad
 {
     //セルに表示するテキストを配列に格納
-    myflashcard = [[NSArray alloc]initWithObjects:@"グループ1",@"グループ2",@"グループ3",nil];      //未初期化
+    myflashcard = [[NSMutableArray alloc] init];      //未初期化
+    for(int i = 0; i < 3;i++){
+        NSString *tmp = @"グループ";
+        [myflashcard addObject:[tmp stringByAppendingString:[NSString stringWithFormat:@"%d", i]]];
+    }
 }
 
 

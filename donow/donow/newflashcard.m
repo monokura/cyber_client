@@ -13,6 +13,9 @@
 
 @implementation newflashcard
 @synthesize grouplabel;
+@synthesize flashcard_name;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

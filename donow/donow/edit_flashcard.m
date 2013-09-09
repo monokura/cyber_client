@@ -1,18 +1,18 @@
 //
-//  flashcard.m
+//  edit_flashcard.m
 //  donow
 //
 //  Created by techcamp on 13/09/09.
 //
 //
 
-#import "flashcard.h"
+#import "edit_flashcard.h"
 
-@interface flashcard ()
+@interface edit_flashcard ()
 
 @end
 
-@implementation flashcard
+@implementation edit_flashcard
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"単語帳編集";
+	
 	// Do any additional setup after loading the view.
 }
 
@@ -35,11 +37,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)to_setting:(id)sender {
-    UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flashcard_setting"];
-    [self.navigationController pushViewController:viewController animated:YES];
-    
-    
-    
-}
 @end

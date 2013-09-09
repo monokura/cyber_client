@@ -1,5 +1,5 @@
 //
-//  flashcard.h
+//  edit_flashcard.h
 //  donow
 //
 //  Created by techcamp on 13/09/09.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface flashcard : UIViewController
-- (IBAction)to_setting:(id)sender;
+@interface edit_flashcard : UIViewController
 
 @end

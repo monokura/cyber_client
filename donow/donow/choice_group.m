@@ -28,6 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"単語選択";//ナビゲーションバー_タイトル
+
+    
     group = [[NSArray alloc]initWithObjects:@"グループ1",@"グループ2",@"グループ3",@"グループ4",@"グループ5",@"グループ6",@"グループ7",@"グループ8",@"グループ9",@"グループ10",@"グループ11",@"グループ12",nil];      //未初期化
 }
 

@@ -118,11 +118,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="FQU-hd-uo0">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="fnX-Wi-XQE">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -136,18 +136,119 @@
             <point key="canvasLocation" x="1396" y="-77"/>
         </scene>
         <!--Flashcard-->
-        <scene sceneID="arz-7K-bGP">
+        <scene sceneID="PrI-BA-CVS">
             <objects>
-                <viewController restorationIdentifier="flashcard" storyboardIdentifier="flashcard" id="83H-YL-7sc" customClass="flashcard" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="smB-tC-T3O">
+                <viewController restorationIdentifier="flashcard" storyboardIdentifier="flashcard" id="nbu-Jt-Byx" customClass="flashcard" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YHA-EI-m7Q">
+                        <rect key="frame" x="0.0" y="20" width="568" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4j-SK-E6i">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="設定">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="to_setting:" destination="nbu-Jt-Byx" eventType="touchUpInside" id="Waj-Vw-njG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="T4j-SK-E6i" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Rp5-ix-GhB"/>
+                            <constraint firstAttribute="trailing" secondItem="T4j-SK-E6i" secondAttribute="trailing" constant="117" id="uFG-pB-LYO"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OIg-UP-cFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1791" y="280"/>
+        </scene>
+        <!--Flashcard setting-->
+        <scene sceneID="Oyn-2L-sBB">
+            <objects>
+                <viewController storyboardIdentifier="flashcard_setting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oP7-SS-gtr" customClass="flashcard_setting" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6SW-2f-bDh">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="チェックされた単語を除く" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuY-Uf-onY">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="SKh-jB-cE5"/>
+                                    <constraint firstAttribute="width" constant="149" id="h69-bx-px1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZbJ-sK-RPE">
+                                <connections>
+                                    <action selector="remove_card:" destination="oP7-SS-gtr" eventType="valueChanged" id="Yw7-ae-fVc"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcR-EC-UPN">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="単語帳を削除する">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="delete_card:" destination="oP7-SS-gtr" eventType="touchUpInside" id="5zG-HR-D5v"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NH1-Cu-1NY">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="単語帳を編集する">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="edit_flashcard:" destination="oP7-SS-gtr" eventType="touchUpInside" id="MhC-vp-uWc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZbJ-sK-RPE" firstAttribute="centerY" secondItem="DuY-Uf-onY" secondAttribute="centerY" type="default" id="01c-sd-6c4"/>
+                            <constraint firstItem="AcR-EC-UPN" firstAttribute="top" secondItem="6SW-2f-bDh" secondAttribute="top" constant="202" id="H19-kL-elk"/>
+                            <constraint firstItem="NH1-Cu-1NY" firstAttribute="centerX" secondItem="AcR-EC-UPN" secondAttribute="centerX" type="default" id="M5m-tE-CfZ"/>
+                            <constraint firstItem="NH1-Cu-1NY" firstAttribute="centerX" secondItem="6SW-2f-bDh" secondAttribute="centerX" type="default" id="ZlZ-iw-5QR"/>
+                            <constraint firstAttribute="trailing" secondItem="ZbJ-sK-RPE" secondAttribute="trailing" constant="56" id="c0g-nY-slM"/>
+                            <constraint firstItem="ZbJ-sK-RPE" firstAttribute="top" secondItem="6SW-2f-bDh" secondAttribute="top" constant="77" id="cUp-xg-7F6"/>
+                            <constraint firstItem="DuY-Uf-onY" firstAttribute="leading" secondItem="6SW-2f-bDh" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="joZ-f1-6OX"/>
+                            <constraint firstItem="NH1-Cu-1NY" firstAttribute="top" secondItem="6SW-2f-bDh" secondAttribute="top" constant="130" id="lLT-Mn-Bz8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LNV-5R-aya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2417" y="452"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="sB6-CQ-0C5">
+            <objects>
+                <viewController id="hvo-IA-XJt" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dcb-ZP-Cg4">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rmi-1M-Set" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rLY-VE-uKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1880" y="181"/>
+            <point key="canvasLocation" x="2929" y="486"/>
         </scene>
         <!--Newflashcard - 新規作成-->
         <scene sceneID="PBH-ce-VUv">
@@ -161,7 +262,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="549"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="anu-Xd-MxG">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="flashcard_name" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="anu-Xd-MxG">
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="1l5-aa-1OH"/>
                                         <constraint firstAttribute="width" constant="168" id="znY-XX-jG5"/>
@@ -351,12 +452,159 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="新規作成" id="f6f-sm-adc"/>
                     <connections>
+                        <outlet property="flashcard_name" destination="anu-Xd-MxG" id="Jnf-tY-xna"/>
                         <outlet property="grouplabel" destination="CDc-GR-1jV" id="X2e-hj-kik"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4i-eV-tXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1880" y="-482"/>
+        </scene>
+        <!--Edit flashcard-->
+        <scene sceneID="gH9-Gr-PMx">
+            <objects>
+                <viewController restorationIdentifier="edit_flashcard" storyboardIdentifier="edit_flashcard" id="Vri-wS-dsO" customClass="edit_flashcard" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pYx-zA-Hm9">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="iyb-YY-Gq6">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UcC-U2-2te">
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="単語帳名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suy-W9-ddo">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="説明" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EA-e4-HrE">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="作成者" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0Y-33-WsC">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="（自動入力）" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAf-ER-yp4">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="所属グループ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTO-VN-GdW">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="公開情報" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctX-oZ-SBN">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lSd-On-JEM">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="JuB-8q-KMP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="meu-ZQ-87C">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="165" id="MY5-1B-DtL"/>
+                                                <constraint firstAttribute="height" constant="30" id="h4j-Hl-w4v"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IgE-D6-yfc">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Za4-SE-d7A"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gxG-rd-Wb0">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="180" id="SAD-sp-qFT"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7K-gm-f7J">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="TXe-Mk-vJa"/>
+                                                <constraint firstAttribute="width" constant="160" id="ndG-Ta-Kxn"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" title="単語選択画面へ">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TB6-Nc-cVM">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" title="編集完了">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="meu-ZQ-87C" firstAttribute="leading" secondItem="LTO-VN-GdW" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="04G-kq-Xix"/>
+                                        <constraint firstItem="meu-ZQ-87C" firstAttribute="trailing" secondItem="gxG-rd-Wb0" secondAttribute="trailing" type="default" id="1JW-MG-TwN"/>
+                                        <constraint firstAttribute="bottom" secondItem="IgE-D6-yfc" secondAttribute="bottom" constant="200" id="5Da-JR-4sG"/>
+                                        <constraint firstAttribute="bottom" secondItem="m0Y-33-WsC" secondAttribute="bottom" constant="148" id="5oi-4j-jgw"/>
+                                        <constraint firstItem="LTO-VN-GdW" firstAttribute="centerY" secondItem="meu-ZQ-87C" secondAttribute="centerY" type="default" id="6n5-ya-Ovt"/>
+                                        <constraint firstItem="IgE-D6-yfc" firstAttribute="centerX" secondItem="UAf-ER-yp4" secondAttribute="centerX" type="default" id="8fa-sv-5yN"/>
+                                        <constraint firstItem="m0Y-33-WsC" firstAttribute="centerX" secondItem="ctX-oZ-SBN" secondAttribute="centerX" type="default" id="A9O-pX-9ht"/>
+                                        <constraint firstAttribute="bottom" secondItem="TB6-Nc-cVM" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="AAb-9g-Ncc"/>
+                                        <constraint firstItem="meu-ZQ-87C" firstAttribute="leading" secondItem="gxG-rd-Wb0" secondAttribute="leading" type="default" id="Aba-lH-F9u"/>
+                                        <constraint firstItem="TB6-Nc-cVM" firstAttribute="trailing" secondItem="p7K-gm-f7J" secondAttribute="trailing" type="default" id="AcF-wI-Paf"/>
+                                        <constraint firstItem="suy-W9-ddo" firstAttribute="leading" secondItem="UcC-U2-2te" secondAttribute="leading" constant="16" id="BI2-1d-34W"/>
+                                        <constraint firstItem="IgE-D6-yfc" firstAttribute="leading" secondItem="meu-ZQ-87C" secondAttribute="leading" type="default" id="DNL-QM-uu7"/>
+                                        <constraint firstItem="UAf-ER-yp4" firstAttribute="baseline" secondItem="m0Y-33-WsC" secondAttribute="baseline" type="default" id="KnI-yP-h3f"/>
+                                        <constraint firstAttribute="bottom" secondItem="p7K-gm-f7J" secondAttribute="bottom" constant="74" id="Ndf-uB-DIs"/>
+                                        <constraint firstItem="suy-W9-ddo" firstAttribute="top" secondItem="UcC-U2-2te" secondAttribute="top" constant="29" id="PU1-2y-97b"/>
+                                        <constraint firstItem="meu-ZQ-87C" firstAttribute="baseline" secondItem="LTO-VN-GdW" secondAttribute="baseline" type="default" id="RI1-71-sGv"/>
+                                        <constraint firstItem="p7K-gm-f7J" firstAttribute="centerX" secondItem="UcC-U2-2te" secondAttribute="centerX" type="default" id="RNs-VH-LLO"/>
+                                        <constraint firstItem="6EA-e4-HrE" firstAttribute="top" secondItem="UcC-U2-2te" secondAttribute="top" constant="75" id="UKx-N5-WGZ"/>
+                                        <constraint firstItem="meu-ZQ-87C" firstAttribute="top" secondItem="UcC-U2-2te" secondAttribute="top" constant="268" id="VyX-h7-mkZ"/>
+                                        <constraint firstItem="gxG-rd-Wb0" firstAttribute="trailing" secondItem="lSd-On-JEM" secondAttribute="trailing" type="default" id="fQK-E8-t3u"/>
+                                        <constraint firstAttribute="bottom" secondItem="ctX-oZ-SBN" secondAttribute="bottom" constant="205" id="j4S-ch-b1Z"/>
+                                        <constraint firstItem="gxG-rd-Wb0" firstAttribute="top" secondItem="lSd-On-JEM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kqG-na-H8R"/>
+                                        <constraint firstItem="p7K-gm-f7J" firstAttribute="leading" secondItem="TB6-Nc-cVM" secondAttribute="leading" type="default" id="ljC-gB-mdc"/>
+                                        <constraint firstItem="IgE-D6-yfc" firstAttribute="trailing" secondItem="meu-ZQ-87C" secondAttribute="trailing" type="default" id="lmo-OS-5Ch"/>
+                                        <constraint firstItem="ctX-oZ-SBN" firstAttribute="leading" secondItem="suy-W9-ddo" secondAttribute="leading" type="default" id="lxn-Gu-1l7"/>
+                                        <constraint firstItem="lSd-On-JEM" firstAttribute="top" secondItem="UcC-U2-2te" secondAttribute="top" constant="25" id="nro-xS-nPW"/>
+                                        <constraint firstItem="gxG-rd-Wb0" firstAttribute="leading" secondItem="lSd-On-JEM" secondAttribute="leading" type="default" id="pSv-VF-T0l"/>
+                                        <constraint firstItem="LTO-VN-GdW" firstAttribute="leading" secondItem="UcC-U2-2te" secondAttribute="leading" constant="8" id="qRe-Z7-2Qr"/>
+                                        <constraint firstItem="6EA-e4-HrE" firstAttribute="centerX" secondItem="suy-W9-ddo" secondAttribute="centerX" type="default" id="ya4-vO-UZC"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="UcC-U2-2te" firstAttribute="trailing" secondItem="iyb-YY-Gq6" secondAttribute="trailing" type="default" id="Gdy-eR-Ndi"/>
+                                <constraint firstItem="UcC-U2-2te" firstAttribute="leading" secondItem="iyb-YY-Gq6" secondAttribute="leading" type="default" id="KHb-f6-EBr"/>
+                                <constraint firstItem="UcC-U2-2te" firstAttribute="top" secondItem="iyb-YY-Gq6" secondAttribute="top" type="default" id="dUR-DE-Zxh"/>
+                                <constraint firstItem="UcC-U2-2te" firstAttribute="bottom" secondItem="iyb-YY-Gq6" secondAttribute="bottom" type="default" id="gQT-DC-fIe"/>
+                            </constraints>
+                        </view>
+                    </tableView>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LaF-ei-kSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2797" y="-193"/>
         </scene>
         <!--Choice word-->
         <scene sceneID="zMZ-fd-Ki8">
@@ -473,6 +721,58 @@
             <point key="canvasLocation" x="358" y="287"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="choice_group" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/choice_group.h"/>
+        </class>
+        <class className="choice_word" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/choice_word.h"/>
+        </class>
+        <class className="edit_flashcard" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/edit_flashcard.h"/>
+        </class>
+        <class className="flashcard" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/flashcard.h"/>
+            <relationships>
+                <relationship kind="action" name="to_setting:"/>
+            </relationships>
+        </class>
+        <class className="flashcard_setting" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/flashcard_setting.h"/>
+            <relationships>
+                <relationship kind="action" name="delete_card:"/>
+                <relationship kind="action" name="edit_flashcard:"/>
+                <relationship kind="action" name="remove_card:"/>
+            </relationships>
+        </class>
+        <class className="group" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/group.h"/>
+        </class>
+        <class className="login" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/login.h"/>
+            <relationships>
+                <relationship kind="action" name="button_login:" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="mypage" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mypage.h"/>
+        </class>
+        <class className="newflashcard" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/newflashcard.h"/>
+            <relationships>
+                <relationship kind="action" name="makeflashcard:"/>
+                <relationship kind="action" name="to_choice_group:"/>
+                <relationship kind="action" name="to_choice_word:"/>
+                <relationship kind="outlet" name="flashcard_name" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="grouplabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="navigationbar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="navigationitem" candidateClass="UINavigationItem"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
