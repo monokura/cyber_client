@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface regist_user : UIViewController
+@interface regist_user : UIViewController<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *TextBoxID;
+@property (weak, nonatomic) IBOutlet UITextField *TextBoxPass2;
+@property (weak, nonatomic) IBOutlet UITextField *TextBoxPass1;
+- (IBAction)backgroundTapped:(id)sender;
+- (IBAction)registerButtonPushed:(id)sender;
 
 @end

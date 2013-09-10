@@ -61,23 +61,23 @@
     CGRect kbFrame = [bValue CGRectValue];
     
     // テキストビューの高さをキーボードサイズ分縮小
-    CGRect textFrame = self.view.frame;
+    CGRect textFrame = self.PageOutline.frame;
     textFrame.size.height = _defaultTextViewHeight - kbFrame.size.height;
-    self.view.frame = textFrame;
+    self.PageOutline.frame = textFrame;
 }
 
 -(void)keyboardDidHide:(NSNotification *)notification
 {
     // テキストビューの高さを元に戻す
-    CGRect textFrame = self.view.frame;
+    CGRect textFrame = self.PageOutline.frame;
     textFrame.size.height = _defaultTextViewHeight;
-    self.view.frame = textFrame;
+    self.PageOutline.frame = textFrame;
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     // テキストビューの初期サイズ
-    CGRect textFrame1 = self.view.frame;
+    CGRect textFrame1 = self.PageOutline.frame;
     _defaultTextViewHeight = textFrame1.size.height;
 }
 
@@ -105,7 +105,7 @@
     [http sendGet];
     NSDictionary *result = [http getResult];
     
-    if([result objectForKey:@"error"]){
+    if([[result objectForKey:@"error"] boolValue]){
         NSString *mes = [result objectForKey:@"message"];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ログイン失敗" message:mes delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alert show];
@@ -118,6 +118,11 @@
 
 - (IBAction)backgroundTapped:(id)sender {
     [self.view endEditing:YES];
+}
+
+- (IBAction)regist_user:(id)sender {
+    UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"regist_user"];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
