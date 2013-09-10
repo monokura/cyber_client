@@ -28,6 +28,7 @@
 		43F0CA9317DDD37900B13C26 /* group_database.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F0CA9217DDD37900B13C26 /* group_database.m */; };
 		43F0CA9617DE9C6500B13C26 /* check_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F0CA9417DE9C6500B13C26 /* check_off.png */; };
 		43F0CA9717DE9C6500B13C26 /* check_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F0CA9517DE9C6500B13C26 /* check_on.png */; };
+		C3926E0417DE9FDE003F2131 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3926E0317DE9FDE003F2131 /* HttpRequest.m */; };
 		C3E094A517D9E89100E7EB94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E094A417D9E89100E7EB94 /* UIKit.framework */; };
 		C3E094A717D9E89100E7EB94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E094A617D9E89100E7EB94 /* Foundation.framework */; };
 		C3E094A917D9E89100E7EB94 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E094A817D9E89100E7EB94 /* CoreGraphics.framework */; };
@@ -78,6 +79,8 @@
 		43F0CA9217DDD37900B13C26 /* group_database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = group_database.m; sourceTree = "<group>"; };
 		43F0CA9417DE9C6500B13C26 /* check_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_off.png; sourceTree = "<group>"; };
 		43F0CA9517DE9C6500B13C26 /* check_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_on.png; sourceTree = "<group>"; };
+		C3926E0217DE9FDE003F2131 /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
+		C3926E0317DE9FDE003F2131 /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequest.m; sourceTree = "<group>"; };
 		C3E094A117D9E89100E7EB94 /* donow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E094A417D9E89100E7EB94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3E094A617D9E89100E7EB94 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -165,6 +168,15 @@
 			name = image;
 			sourceTree = "<group>";
 		};
+		C3926E0517DE9FE7003F2131 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				C3926E0217DE9FDE003F2131 /* HttpRequest.h */,
+				C3926E0317DE9FDE003F2131 /* HttpRequest.m */,
+			);
+			name = Http;
+			sourceTree = "<group>";
+		};
 		C3E0949817D9E89100E7EB94 = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +215,7 @@
 				431BDC6B17DAE2A800937886 /* login.m */,
 				C3E094C317D9E89100E7EB94 /* ViewController.m */,
 				C3E094C217D9E89100E7EB94 /* ViewController.h */,
+				C3926E0517DE9FE7003F2131 /* Http */,
 				436E146917DD94BD00223D66 /* flashcard */,
 				436E146A17DD953100223D66 /* group */,
 				436E146B17DD955600223D66 /* image */,
@@ -313,6 +326,7 @@
 				43F0CA7F17DDBEC100B13C26 /* group_information.m in Sources */,
 				43F0CA8D17DDCE6E00B13C26 /* search_group.m in Sources */,
 				43F0CA9317DDD37900B13C26 /* group_database.m in Sources */,
+				C3926E0417DE9FDE003F2131 /* HttpRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
