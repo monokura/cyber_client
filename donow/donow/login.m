@@ -10,6 +10,9 @@
 #import "HttpRequest.h"
 
 @interface login ()
+{
+    int _defaultTextViewHeight;
+}
 
 @end
 
@@ -31,6 +34,51 @@
     
     self.TextBoxId.delegate = self;
     self.TextBoxPass.delegate = self;
+    
+    // システム標準の通知センターを取得
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+    // キーボードが表示されたらkeyboardDidShow:メソッドを実行
+    [notificationCenter addObserver:self
+                           selector:@selector(keyboardDidShow:)
+                               name:UIKeyboardDidShowNotification
+                             object:nil];
+    
+    // キーボードが隠れたらkeyboardDidHide:メソッドを実行
+    [notificationCenter addObserver:self
+                           selector:@selector(keyboardDidHide:)
+                               name:UIKeyboardDidHideNotification
+                             object:nil];
+   
+}
+
+-(void)keyboardDidShow:(NSNotification *)notification
+{
+    // 通知情報を取り出す
+    NSDictionary *info = [notification userInfo];
+    // キーボードサイズを取得
+    NSValue *bValue = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect kbFrame = [bValue CGRectValue];
+    
+    // テキストビューの高さをキーボードサイズ分縮小
+    CGRect textFrame = self.view.frame;
+    textFrame.size.height = _defaultTextViewHeight - kbFrame.size.height;
+    self.view.frame = textFrame;
+}
+
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+    // テキストビューの高さを元に戻す
+    CGRect textFrame = self.view.frame;
+    textFrame.size.height = _defaultTextViewHeight;
+    self.view.frame = textFrame;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    // テキストビューの初期サイズ
+    CGRect textFrame1 = self.view.frame;
+    _defaultTextViewHeight = textFrame1.size.height;
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,8 +116,15 @@
     }
 }
 
+- (IBAction)backgroundTapped:(id)sender {
+    [self.view endEditing:YES];
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self.view endEditing:YES];
     return YES;
 }
+
+
+
 @end
