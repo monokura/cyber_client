@@ -163,10 +163,14 @@
     if([title isEqualToString:@"新規作成"])
     {
         viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newflashcard"];
+        [self.navigationController pushViewController:viewController animated:YES];
     }else{
-        viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flashcard"];
+        viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+        NSLog(@"%@", viewController);
+        //[self presentModalViewController:viewController animated:YES ];
+        [self presentViewController:viewController animated:YES completion:nil];
+        //[self.view addSubview:viewController.view];
     }
-    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end
