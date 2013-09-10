@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface newgroup : UIViewController
+- (IBAction)regist_group:(id)sender;
 
 @end

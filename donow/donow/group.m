@@ -31,10 +31,18 @@
 {
     //セルに表示するテキストを配列に格納
     myflashcard = [[NSMutableArray alloc] init];      //未初期化
-    for(int i = 0; i < 3;i++){
+    [myflashcard addObject:@"新規グループ作成"];
+    for(int i = 1; i < 4;i++){
         NSString *tmp = @"グループ";
         [myflashcard addObject:[tmp stringByAppendingString:[NSString stringWithFormat:@"%d", i]]];
     }
+    
+    UIBarButtonItem *btn =[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(clickButton)];
+    
+
+    self.navigationItem.rightBarButtonItem = btn;
+
+    
 }
 
 
@@ -123,13 +131,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    NSString *title = [myflashcard objectAtIndex:indexPath.row];
+    
+    if([title isEqualToString:@"新規グループ作成"])
+    {
+        UIViewController *viewController = nil;
+        viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newgroup"];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }else{
+        UITableViewController *viewController = nil;
+        viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"group_information"];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+}
+
+-(void)clickButton:(id)sender{
+    UITableViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"serch_group"];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface edit_flashcard : UIViewController
+- (IBAction)choice_word:(id)sender;
+- (IBAction)finish_edit:(id)sender;
 
 @end

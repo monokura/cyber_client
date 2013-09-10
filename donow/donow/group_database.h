@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface group_database : NSObject
+@interface group_database : NSObject{
+    NSString *category;
+    NSString *name;
+}
+@property (nonatomic, copy) NSString *category;
+@property (nonatomic, copy) NSString *name;
+
++ (id)groupOfCategory:(NSString*)category name:(NSString*)name;
+
 
 @end
+

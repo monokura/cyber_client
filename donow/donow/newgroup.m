@@ -26,7 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.navigationItem.title = @"新規グループ作成";
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +36,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)regist_group:(id)sender {
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];//objectAtIndex:1　で一つ前の画面に戻る
+    
+}
 @end

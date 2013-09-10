@@ -157,34 +157,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSString *title = [_rows objectAtIndex:indexPath.row];
     NSString *title = [myflashcard objectAtIndex:indexPath.row];
     UIViewController *viewController = nil;
     
     if([title isEqualToString:@"新規作成"])
     {
-        
         viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newflashcard"];
-        //UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newflashcard"];
-        //[self presentViewController:viewController animated:YES completion:nil];
-        //[self.navigationController pushViewController:viewController animated:YES];
-    
     }else{
         viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flashcard"];
-    //UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flashcard"];
-    //[self presentViewController:viewController animated:YES completion:nil];
-    
     }
-    
     [self.navigationController pushViewController:viewController animated:YES];
-    
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
 }
 
 @end

@@ -37,4 +37,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)choice_word:(id)sender {
+}
+
+- (IBAction)finish_edit:(id)sender {
+}
 @end

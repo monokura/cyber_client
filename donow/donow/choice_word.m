@@ -113,8 +113,8 @@
     [super viewDidLoad];
     [self tableFooterViewMake];
     [self navigatinBarItemMake];
-    nocheckImage_ = [UIImage imageNamed:@"136.gif"];
-    checkedImage_ = [UIImage imageNamed:@"127.gif"];
+    nocheckImage_ = [UIImage imageNamed:@"check_off.png"];
+    checkedImage_ = [UIImage imageNamed:@"check_on.png"];
     
     initialArray = [[NSArray alloc] initWithObjects:@"1-1",@"1-2",@"1-3",@"1-4",@"1-5",@"1-6",@"1-7",@"1-8",@"1-9",@"1-10", nil];
     addArray = [[NSArray alloc] initWithObjects:@"2-1",@"2-2",@"2-3",@"2-4",@"2-5",@"2-6",@"2-7",@"2-8",@"2-9",@"2-10", nil];
