@@ -37,6 +37,7 @@
 		43F0CA9617DE9C6500B13C26 /* check_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F0CA9417DE9C6500B13C26 /* check_off.png */; };
 		43F0CA9717DE9C6500B13C26 /* check_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F0CA9517DE9C6500B13C26 /* check_on.png */; };
 		C3926E0417DE9FDE003F2131 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3926E0317DE9FDE003F2131 /* HttpRequest.m */; };
+		C399764017E0712800B789DA /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = C399763F17E0712800B789DA /* Word.m */; };
 		C3E094A517D9E89100E7EB94 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E094A417D9E89100E7EB94 /* UIKit.framework */; };
 		C3E094A717D9E89100E7EB94 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E094A617D9E89100E7EB94 /* Foundation.framework */; };
 		C3E094A917D9E89100E7EB94 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E094A817D9E89100E7EB94 /* CoreGraphics.framework */; };
@@ -102,6 +103,8 @@
 		43F0CA9517DE9C6500B13C26 /* check_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_on.png; sourceTree = "<group>"; };
 		C3926E0217DE9FDE003F2131 /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
 		C3926E0317DE9FDE003F2131 /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequest.m; sourceTree = "<group>"; };
+		C399763E17E0712800B789DA /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
+		C399763F17E0712800B789DA /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
 		C3E094A117D9E89100E7EB94 /* donow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = donow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E094A417D9E89100E7EB94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3E094A617D9E89100E7EB94 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -151,6 +154,8 @@
 				431BDC7A17DB034E00937886 /* newflashcard.m */,
 				436E147217DDAE5100223D66 /* edit_flashcard.h */,
 				436E147317DDAE5100223D66 /* edit_flashcard.m */,
+				C399763E17E0712800B789DA /* Word.h */,
+				C399763F17E0712800B789DA /* Word.m */,
 			);
 			name = flashcard;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				4384168B17DF01820085F9B2 /* RootViewController.m in Sources */,
 				4384168E17DF02C90085F9B2 /* ViewController.m in Sources */,
 				43886A3717E038CC00DD4AEE /* RadioButton.m in Sources */,
+				C399764017E0712800B789DA /* Word.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

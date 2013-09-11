@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface choice_word : UITableViewController{
+@interface choice_word : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
+{
    //tableにチェックボックスを作成するための変数
 @private
     UIImage *nocheckImage_;
     UIImage *checkedImage_;
-    NSArray *initialArray;
-    NSArray *addArray;
-    NSMutableArray *dataSource_;
+    NSMutableArray *wordList;
+    NSMutableArray *filteredWordList;
     ////////////////////////////////////
 }
+
+- (void)loadFile;
 
 @end

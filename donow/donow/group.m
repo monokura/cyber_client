@@ -15,17 +15,6 @@
 @implementation group{
     NSMutableArray *myflashcard;//セル表示用配列
 }
-/*初期コード１/////////////////////////////////////////////
- - (id)initWithStyle:(UITableViewStyle)style
- {
- self = [super initWithStyle:style];
- if (self) {
- // Custom initialization
- }
- return self;
- }
- *//////////////////////////////////////////////////////////
-
 
 - (void)viewDidLoad
 {
@@ -81,8 +70,6 @@
 
 -(void)clickButton{
     UITableViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"serch_group"];
-    
-     NSLog(@"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     
     [self.navigationController pushViewController:viewController animated:YES];
 }
