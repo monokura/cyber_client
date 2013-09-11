@@ -16,8 +16,6 @@
 @property (readwrite)NSString *userid;
 - (IBAction)button_login:(UIButton *)sender;
 - (IBAction)backgroundTapped:(id)sender;
-
 - (IBAction)regist_user:(id)sender;
--(void)keyboardDidShow:(NSNotification *)notification;
--(void)keyboardDidHide:(NSNotification *)notification;
+- (void)saveFile;
 @end

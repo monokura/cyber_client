@@ -11,9 +11,6 @@
 
 
 @interface login ()
-{
-    int _defaultTextViewHeight;
-}
 
 @end
 
@@ -39,50 +36,6 @@
     
     self.TextBoxId.delegate = self;
     self.TextBoxPass.delegate = self;
-    
-    // システム標準の通知センターを取得
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    
-    // キーボードが表示されたらkeyboardDidShow:メソッドを実行
-    [notificationCenter addObserver:self
-                           selector:@selector(keyboardDidShow:)
-                               name:UIKeyboardDidShowNotification
-                             object:nil];
-    
-    // キーボードが隠れたらkeyboardDidHide:メソッドを実行
-    [notificationCenter addObserver:self
-                           selector:@selector(keyboardDidHide:)
-                               name:UIKeyboardDidHideNotification
-                             object:nil];
-}
-
--(void)keyboardDidShow:(NSNotification *)notification
-{
-    // 通知情報を取り出す
-    NSDictionary *info = [notification userInfo];
-    // キーボードサイズを取得
-    NSValue *bValue = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-    CGRect kbFrame = [bValue CGRectValue];
-    
-    // テキストビューの高さをキーボードサイズ分縮小
-    CGRect textFrame = self.PageOutline.frame;
-    textFrame.size.height = _defaultTextViewHeight - kbFrame.size.height;
-    self.PageOutline.frame = textFrame;
-}
-
--(void)keyboardDidHide:(NSNotification *)notification
-{
-    // テキストビューの高さを元に戻す
-    CGRect textFrame = self.PageOutline.frame;
-    textFrame.size.height = _defaultTextViewHeight;
-    self.PageOutline.frame = textFrame;
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    // テキストビューの初期サイズ
-    CGRect textFrame1 = self.PageOutline.frame;
-    _defaultTextViewHeight = textFrame1.size.height;
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,6 +62,8 @@
         [alert show];
         return;
     }
+    
+    // 同期通信
     HttpRequest *http = [[HttpRequest alloc] init];
     [http setRoot:@"/login"];
     [http addKey:@"name" andValue:id];
@@ -116,6 +71,7 @@
     [http sendGet];
     NSDictionary *result = [http getResult];
     
+    // 通信結果で分岐
     if([[result objectForKey:@"error"] boolValue]){
         NSString *mes = [result objectForKey:@"message"];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ログイン失敗" message:mes delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
@@ -183,9 +139,34 @@
         [alert show];
         return;
     }else{
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        appDelegate.userid = [result objectForKey:(@"name")];
+        
+        [self saveFile];
+        
         UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
         [self presentViewController:viewController animated:YES completion:nil];
     }
 }
+
+
+- (void)saveFile
+{
+    // 保存先パス設定
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"dictionary.txt"];
+    
+    // Http通信
+    HttpRequest *http = [[HttpRequest alloc] init];
+    [http setRoot:@"/searchWord"];
+    [http addKey:@"word" andValue:@""];
+    [http sendGet];
+    NSDictionary *result = [http getResult];
+    NSString *str = [result description];
+    
+    // ファイルに保存
+    [str writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+}
+
 
 @end
