@@ -54,8 +54,17 @@
     
     // JSONをNSDictionaryに変換
     // Todo : 配列が飛んでくると死ぬ(*ﾟ∀ﾟ)
-    NSError *error=nil;
-    result = [NSJSONSerialization JSONObjectWithData:json_raw_data options:NSJSONReadingAllowFragments error:&error];
+    if(json_raw_data != nil){
+        NSError *error=nil;
+        result = [NSJSONSerialization JSONObjectWithData:json_raw_data options:NSJSONReadingAllowFragments error:&error];
+    }else{
+        // 通信エラー
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [NSNumber numberWithBool:YES] , @"error",
+                  @"通信エラー" , @"message",
+                  nil];
+    }
+    
 }
 
 -(NSDictionary *)getResult
