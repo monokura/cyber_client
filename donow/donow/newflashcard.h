@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "login.h"
 
 @interface newflashcard : UIViewController<UITextFieldDelegate> 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationbar;
@@ -16,5 +17,10 @@
 - (IBAction)to_choice_word:(id)sender;
 - (IBAction)makeflashcard:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *flashcard_name;
+@property (weak, nonatomic) IBOutlet UILabel *labeluser;
+@property (weak, nonatomic) NSMutableString *labeluserfrom;
+@property (weak, nonatomic) IBOutlet UITextField *textf_flashname;
+@property (weak, nonatomic) IBOutlet UITextField *textf_detail;
+- (IBAction)backgroundpush:(id)sender;
 
 @end

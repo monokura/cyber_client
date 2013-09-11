@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface login : UIViewController<UITextFieldDelegate>
+@interface login : UIViewController<UITextFieldDelegate,UIAlertViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *TextBoxId;
 @property (weak, nonatomic) IBOutlet UITextField *TextBoxPass;
 @property (strong, nonatomic) IBOutlet UIControl *PageOutline;
+@property (readwrite)NSString *userid;
 - (IBAction)button_login:(UIButton *)sender;
 - (IBAction)backgroundTapped:(id)sender;
 

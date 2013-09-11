@@ -16,5 +16,6 @@
 @property (nonatomic, strong) UIButton *left_button;
 @property (nonatomic, strong) UIButton *right_button;
 @property (nonatomic, strong) UILabel *flashcardname;
+@property (nonatomic, strong) UIButton *back;
 
 @end

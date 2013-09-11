@@ -45,23 +45,11 @@
     return self;
 }
 
-//チェックボックス用コード(こぴぺ)
+//チェックボックス用コード
 
-- (void)tableFooterViewMake{
-    UIButton *addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    addButton.frame = CGRectMake(0, 0, 200, 50);
-    [addButton setTitle:@"add" forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(addButtonPush) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-    [view addSubview:addButton];
-    
-    self.tableView.tableFooterView = view;
-//    [view release];
-}
 
 - (void)navigatinBarItemMake{
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"WhichIsCheckedCell?" style:101 target:self action:@selector(rightButtonPush)];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"完了" style:101 target:self action:@selector(rightButtonPush)];
     self.navigationItem.rightBarButtonItem = rightButton;
 }
 
@@ -111,7 +99,6 @@
 
   //チェックボックス用コード//////////////////////////////////
     [super viewDidLoad];
-    [self tableFooterViewMake];
     [self navigatinBarItemMake];
     nocheckImage_ = [UIImage imageNamed:@"check_off.png"];
     checkedImage_ = [UIImage imageNamed:@"check_on.png"];
@@ -223,13 +210,22 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
+    NSLog(@"!");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    
+  /*
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:@"data1" forKey:@"key1"];
+    [dic setObject:@"data2" forKey:@"key2"];
+    [dic setObject:@"data3" forKey:@"key3"];
+    [dic setObject:@"data4" forKey:@"key4"];
+    [dic setObject:@"data5" forKey:@"key5"];
+    cell.textLabel.text = [[dic objectAtIndex:indexPath.row] objectForKey:@"data"];
+    NSArray *items = [dic objectForKey:se];
+   */
     cell.textLabel.text = [[dataSource_ objectAtIndex:indexPath.row] objectForKey:@"data"];
     
     if ([[[dataSource_ objectAtIndex:indexPath.row] objectForKey:@"checked"] isEqualToString:@"NO"]) {

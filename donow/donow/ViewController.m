@@ -96,16 +96,17 @@
    */ ///////////////////////////////////////////////
     
     //setting_button/////////////////////////////
-    _setting =  [UIButton buttonWithType:UIButtonTypeCustom];
-    _setting.frame = CGRectMake(0, 0, 80, 50);                  //ボタン位置設定
+    _back =  [UIButton buttonWithType:UIButtonTypeCustom];
+    _back.frame = CGRectMake(0, 0, 80, 50);                  //ボタン位置設定
   //  UIImage *img = [UIImage imageNamed:@"check_off.png"];           //ボタン画像生成
-    [_setting setBackgroundImage:img forState:UIControlStateNormal];//画像セット
-    [_setting setTitle:@"戻る" forState:UIControlStateNormal];     //文字入力
+    [_back setBackgroundImage:img forState:UIControlStateNormal];//画像セット
+    [_back setTitle:@"戻る" forState:UIControlStateNormal];     //文字入力
     //[_setting sizeToFit];                                         //サイズ自動調整関数
-    [_setting addTarget:self
-                 action:@selector(button_Tapped1:)
+    [_back addTarget:self
+                 action:@selector(Tapped_back)
+     
        forControlEvents:UIControlEventTouchUpInside];               // ボタンタップ時呼び出しメソッド(button_Tapped)
-    [self.view addSubview:_setting];                                // settingをviewに追加
+    [self.view addSubview:_back];                                // settingをviewに追加
     ///////////////////////////////////////////////
     
 }
@@ -120,5 +121,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)Tapped_back{
+    NSLog(@"Tapped_back3");
+    
+    UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
+    [self presentViewController:viewController animated:YES completion:nil];
+    NSLog(@"Tapped_back");
+    
+
+    }
 
 @end

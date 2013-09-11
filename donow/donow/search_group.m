@@ -18,9 +18,9 @@
 @synthesize filteredgroupArray;
 @synthesize serchbar;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -32,13 +32,13 @@
     [super viewDidLoad];
     
     // Don't show the scope bar or cancel button until editing begins
-    [_groupSerchBar setShowsScopeBar:NO];
-    [_groupSerchBar sizeToFit];
+    [serchbar setShowsScopeBar:NO];
+    [serchbar sizeToFit];
     
     // Hide the search bar until user scrolls up
-    CGRect newBounds = [[self tableView] bounds];
-    newBounds.origin.y = newBounds.origin.y + _groupSerchBar.bounds.size.height;
-    [[self tableView] setBounds:newBounds];
+    CGRect newBounds = [self.tableView bounds];
+    newBounds.origin.y = newBounds.origin.y + serchbar.bounds.size.height;
+    [self.tableView setBounds:newBounds];
     
     /*** Sample Data for candyArray ***/
     
@@ -58,7 +58,7 @@
     filteredgroupArray = [NSMutableArray arrayWithCapacity:[groupArray count]];
     
     // Reload the table
-    [[self tableView] reloadData];
+    [self.tableView reloadData];
     
     
 }
@@ -91,7 +91,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if ( cell == nil ) {
@@ -202,23 +202,5 @@
     // Note that if you didn't hide your search bar, you should probably not include this, as it would be redundant
     [serchbar becomeFirstResponder];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

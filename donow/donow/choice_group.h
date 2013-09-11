@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface choice_group : UITableViewController
+{
+
+    NSMutableArray *datagroupSource_;
+    NSArray *initialArray;
+    UIImage *nocheckImage_;
+    UIImage *checkedImage_;
+}
 
 @end

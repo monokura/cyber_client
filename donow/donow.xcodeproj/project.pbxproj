@@ -27,6 +27,9 @@
 		4384168817DF016F0085F9B2 /* ModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4384168717DF016F0085F9B2 /* ModelController.m */; };
 		4384168B17DF01820085F9B2 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4384168A17DF01820085F9B2 /* RootViewController.m */; };
 		4384168E17DF02C90085F9B2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4384168D17DF02C90085F9B2 /* ViewController.m */; };
+		43886A3317E037D200DD4AEE /* RadioButton-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 43886A3117E037D200DD4AEE /* RadioButton-Selected.png */; };
+		43886A3417E037D200DD4AEE /* RadioButton-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 43886A3217E037D200DD4AEE /* RadioButton-Unselected.png */; };
+		43886A3717E038CC00DD4AEE /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 43886A3617E038CC00DD4AEE /* RadioButton.m */; };
 		43F0CA7F17DDBEC100B13C26 /* group_information.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F0CA7E17DDBEC100B13C26 /* group_information.m */; };
 		43F0CA8D17DDCE6E00B13C26 /* search_group.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F0CA8B17DDCE6E00B13C26 /* search_group.m */; };
 		43F0CA8E17DDCE6E00B13C26 /* search_group.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43F0CA8C17DDCE6E00B13C26 /* search_group.xib */; };
@@ -82,6 +85,10 @@
 		4384168A17DF01820085F9B2 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		4384168C17DF02C90085F9B2 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4384168D17DF02C90085F9B2 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		43886A3117E037D200DD4AEE /* RadioButton-Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Selected.png"; sourceTree = "<group>"; };
+		43886A3217E037D200DD4AEE /* RadioButton-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Unselected.png"; sourceTree = "<group>"; };
+		43886A3517E038CC00DD4AEE /* RadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioButton.h; sourceTree = "<group>"; };
+		43886A3617E038CC00DD4AEE /* RadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioButton.m; sourceTree = "<group>"; };
 		43F0CA7D17DDBEC100B13C26 /* group_information.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = group_information.h; sourceTree = "<group>"; };
 		43F0CA7E17DDBEC100B13C26 /* group_information.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = group_information.m; sourceTree = "<group>"; };
 		43F0CA8A17DDCE6E00B13C26 /* search_group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = search_group.h; sourceTree = "<group>"; };
@@ -136,14 +143,14 @@
 				436E145E17DD827A00223D66 /* flashcard_setting.m */,
 				436E145A17DD704500223D66 /* flashcard.h */,
 				436E145B17DD704600223D66 /* flashcard.m */,
-				436E144E17DD57F600223D66 /* choice_word.m */,
 				436E144D17DD57F600223D66 /* choice_word.h */,
+				436E144E17DD57F600223D66 /* choice_word.m */,
 				4358606B17DC4F270026D7A2 /* choice_group.h */,
 				4358606C17DC4F270026D7A2 /* choice_group.m */,
 				431BDC7917DB034E00937886 /* newflashcard.h */,
+				431BDC7A17DB034E00937886 /* newflashcard.m */,
 				436E147217DDAE5100223D66 /* edit_flashcard.h */,
 				436E147317DDAE5100223D66 /* edit_flashcard.m */,
-				431BDC7A17DB034E00937886 /* newflashcard.m */,
 			);
 			name = flashcard;
 			sourceTree = "<group>";
@@ -171,6 +178,8 @@
 		436E146B17DD955600223D66 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				43886A3117E037D200DD4AEE /* RadioButton-Selected.png */,
+				43886A3217E037D200DD4AEE /* RadioButton-Unselected.png */,
 				431BDD4117DB178300937886 /* sample1.png */,
 				431BDD4217DB178400937886 /* sample2.png */,
 				43F0CA9417DE9C6500B13C26 /* check_off.png */,
@@ -263,6 +272,8 @@
 		C3E094AB17D9E89100E7EB94 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				43886A3517E038CC00DD4AEE /* RadioButton.h */,
+				43886A3617E038CC00DD4AEE /* RadioButton.m */,
 				C3E094AC17D9E89100E7EB94 /* donow-Info.plist */,
 				C3E094AD17D9E89100E7EB94 /* InfoPlist.strings */,
 				C3E094B017D9E89100E7EB94 /* main.m */,
@@ -336,6 +347,8 @@
 				43F0CA8E17DDCE6E00B13C26 /* search_group.xib in Resources */,
 				43F0CA9617DE9C6500B13C26 /* check_off.png in Resources */,
 				43F0CA9717DE9C6500B13C26 /* check_on.png in Resources */,
+				43886A3317E037D200DD4AEE /* RadioButton-Selected.png in Resources */,
+				43886A3417E037D200DD4AEE /* RadioButton-Unselected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +380,7 @@
 				4384168817DF016F0085F9B2 /* ModelController.m in Sources */,
 				4384168B17DF01820085F9B2 /* RootViewController.m in Sources */,
 				4384168E17DF02C90085F9B2 /* ViewController.m in Sources */,
+				43886A3717E038CC00DD4AEE /* RadioButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +418,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ippei Otsuka (JZW5DJYPD8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -419,6 +434,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "C61D1FCF-2F9C-4D3C-B91A-2FCF6461BA05";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -436,6 +452,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ippei Otsuka (JZW5DJYPD8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -444,6 +461,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "C61D1FCF-2F9C-4D3C-B91A-2FCF6461BA05";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
