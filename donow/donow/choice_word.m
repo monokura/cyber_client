@@ -7,6 +7,7 @@
 //
 
 #import "choice_word.h"
+#import "HttpRequest.h"
 #import "Word.h"
 
 @interface choice_word ()
@@ -17,37 +18,24 @@
     NSArray *wordlist;//セル表示用配列
 }
 
+/////////////////////////////////////////////
 
 - (id)init
 {
     self = [super initWithNibName:@"STSelectCellViewController" bundle:nil];
     if (self) {
         self.title = @"Select Cell";
-   
     }
     return self;
 }
-
-//チェックボックス用コード
-
-- (void)navigatinBarItemMake{
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"完了" style:101 target:self action:@selector(rightButtonPush)];
-    self.navigationItem.rightBarButtonItem = rightButton;
-}
-
-
-- (void)rightButtonPush{
-    NSLog(@"doya");
-    
-}
-/////////////////////////////////////////////
 
 
 - (void)viewDidLoad
 {
     
-    [super viewDidLoad];
     self.navigationItem.title = @"単語選択";//ナビゲーションバー_タイトル
+    [super viewDidLoad];
+    
     [self navigatinBarItemMake];
     nocheckImage_ = [UIImage imageNamed:@"check_off.png"];
     checkedImage_ = [UIImage imageNamed:@"check_on.png"];
@@ -60,7 +48,29 @@
     [[self tableView] reloadData];
 }
 
-//チェックボックス用コード３
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+}
+
+// ============ チェックボックス用コード ===========
+
+- (void)navigatinBarItemMake{
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"完了" style:101 target:self action:@selector(rightButtonPush)];
+    self.navigationItem.rightBarButtonItem = rightButton;
+}
+
+
+- (void)rightButtonPush{
+    NSLog(@"doya");
+    
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -80,7 +90,8 @@
 {
 	[super viewDidDisappear:animated];
 }
-//////////////////////////////////////////////////////
+
+// ============== テーブルビュー関連 ==============
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -117,7 +128,7 @@
     [[cell textLabel] setText:[word eng]];
     
     // チェックボックスをセット
-    if ([word getCheck]) {
+    if ([word getCheck] == YES) {
         cell.imageView.image = checkedImage_;
     }else{
         cell.imageView.image = nocheckImage_;
@@ -135,15 +146,22 @@
 	[filteredWordList removeAllObjects];
     
 	// Filter the array using NSPredicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.eng contains[c] %@",searchText];
+    // 部分一致
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.eng contains[c] %@",searchText];
+    // 前方一致
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.eng beginsWith[c] %@",searchText];
+    
     NSArray *tempArray = [wordList filteredArrayUsingPredicate:predicate];
     
-//    if(![scope isEqualToString:@"All"]) {
-//        // Further filter the array with the scope
-//        NSPredicate *scopePredicate = [NSPredicate predicateWithFormat:@"SELF.category contains[c] %@",scope];
-//        tempArray = [tempArray filteredArrayUsingPredicate:scopePredicate];
-//    }
-//    
+    // チェック済みのみ表示
+    /*
+    if( "チェック済みボタン" ) {
+        // Further filter the array with the scope
+        NSPredicate *scopePredicate = [NSPredicate predicateWithFormat:@"SELF.check == 1",scope];
+        tempArray = [tempArray filteredArrayUsingPredicate:scopePredicate];
+    }
+    */
+    
     filteredWordList = [NSMutableArray arrayWithArray:tempArray];
     
 }
@@ -151,55 +169,37 @@
 //チェックボックス用コード
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Word *w = [wordList objectAtIndex:indexPath.row];
-    BOOL check = YES;
-    if ([w getCheck]) {
-        check = NO;
+    
+    if(tableView == self.searchDisplayController.searchResultsTableView){
+        // フィルタされた単語をチェック
+        Word *fw = [filteredWordList objectAtIndex:indexPath.row];
+        BOOL check = YES;
+        if ([fw getCheck] == YES) {
+            check = NO;
+        }
+        [[filteredWordList objectAtIndex:indexPath.row] setCheck:check];
+        
+        // 単語から元の配列でのindexを取得し元の配列もチェック
+        [[wordList objectAtIndex:[fw getIndex]] setCheck:check];
+        
+        [tableView reloadData];
+    }else{
+        Word *w = [wordList objectAtIndex:indexPath.row];
+        BOOL check = YES;
+        if ([w getCheck] == YES) {
+            check = NO;
+        }
+        
+        [[wordList objectAtIndex:indexPath.row] setCheck:check];
     }
     
-    [[wordList objectAtIndex:indexPath.row] setCheck:check];
+    [self.tableView reloadData];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-}
+
 //////////////////////////////////////////////////////
 
-- (void)loadFile
-{
-    // 初期化
-    wordList = [NSMutableArray array];
-    // ロードするファイルのパスを設定
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"dictionary.txt"];
-    
-    // ファイルマネージャの取得
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    // ファイルが存在すればロードする
-    if([fileManager fileExistsAtPath:path]){
-        NSString *filestr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
-        // 読み込んだ値を表示
-        NSDictionary *filedic = [filestr propertyList];
-        NSArray *wordArray = [filedic objectForKey:@"word"];
-        for(NSDictionary *dic in wordArray){
-            NSString *eng = [dic objectForKey:@"eng"];
-            NSString *jap = [dic objectForKey:@"jap"];
-            
-            // 配列に追加
-            [wordList addObject:[Word setEng:eng andJap:jap]];
-        }
-    }else{
-        // ファイルがないときの処理
-        NSLog(@"file is not found");
-    }
-}
 
 #pragma mark - UISearchDisplayController Delegate Methods
 
@@ -222,6 +222,72 @@
     
     // Return YES to cause the search result table view to be reloaded.
     return YES;
+}
+
+// =================== File IO =====================
+
+- (void)saveFile
+{
+    // 保存先パス設定
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"dictionary.txt"];
+    
+    // Http通信
+    HttpRequest *http = [[HttpRequest alloc] init];
+    [http setRoot:@"/searchWord"];
+    [http addKey:@"word" andValue:@""];
+    [http sendGet];
+    NSDictionary *result = [http getResult];
+    NSString *str = [result description];
+    
+    // ファイルに保存
+    [str writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+}
+
+- (void)loadFile
+{
+    // 初期化
+    wordList = [NSMutableArray array];
+    // ロードするファイルのパスを設定
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"dictionary.txt"];
+    
+    // ファイルマネージャの取得
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    // ファイルが存在すればロードする
+    if([fileManager fileExistsAtPath:path]){
+        NSString *filestr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
+        // 読み込んだ値を表示
+        NSDictionary *filedic = [filestr propertyList];
+        NSArray *wordArray = [filedic objectForKey:@"word"];
+        int counter = 0;
+        for(NSDictionary *dic in wordArray){
+            NSString *eng = [dic objectForKey:@"eng"];
+            NSString *jap = [dic objectForKey:@"jap"];
+            
+            // 配列に追加
+            [wordList addObject:[Word setEng:eng andJap:jap andIndex:counter]];
+            counter++;
+        }
+    }else{
+        // ファイルがないときの処理
+        NSLog(@"file is not found");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"辞書データが見つかりません"//タイトル
+                                                        message:@"ファイルをダウンロードしますか？"//メッセージ
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"OK", nil];
+        [alert show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 1) {
+        // 押されたのは2番目のボタン（OKと表示されたボタン）
+        [self saveFile];
+        [self loadFile];
+    }
 }
 
 @end

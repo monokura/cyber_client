@@ -98,31 +98,11 @@
     
     // 空欄検知
     if([id length] == 0 || [pass length] == 0 ){
-        //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"登録失敗" message:@"空欄があります" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"hoge"//タイトル
-        message:@"\n"//メッセージ
-        delegate:self
-        cancelButtonTitle:@"Cancel"
-        otherButtonTitles:@"Done", nil];
-        CGAffineTransform trans = CGAffineTransformMakeTranslation(0.0, 30.0);//キーボードでアラートが隠れるのを防ぐ
-        [alert setTransform:trans];
-        UITextField* textField = [[UITextField alloc] initWithFrame:CGRectMake(20.0, 45.0, 245.0, 25.0)];
-        [alert addSubview:textField];//textField
-        [alert show];
-        [textField becomeFirstResponder];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"登録失敗" message:@"空欄があります" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         
         [alert show];
         return;
     }
-    //3 Doneの処理
-    //}
-    //4 入力された文字の取得
-    //- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)inputText{
-    // 入力後の文字列を取得することはできないため、入力前の文字列と入力された文字列をつなげる
-    //    NSMutableString *afterInputText = textField.text.mutableCopy;         //afterInputTextに格納
-    //    [afterInputText replaceCharactersInRange:range withString:inputText];
-    //   return YES;
-    //}
 
     
     // 同期通信

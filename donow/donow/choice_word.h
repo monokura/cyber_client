@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface choice_word : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
+@interface choice_word : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate, UIAlertViewDelegate>
 {
    //tableにチェックボックスを作成するための変数
 @private
@@ -20,5 +20,6 @@
 }
 
 - (void)loadFile;
+- (void)saveFile;
 
 @end
