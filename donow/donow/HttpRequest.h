@@ -41,5 +41,7 @@
 -(void)addKey:(NSString *)key andValue:(NSString *)value;
 -(NSString *)makeUriGet;
 -(void)sendGet;
+-(void)sendPost;
+-(NSString *)makeKeyPost;
 -(NSDictionary *)getResult;
 @end

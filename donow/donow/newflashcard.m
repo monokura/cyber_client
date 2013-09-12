@@ -8,6 +8,9 @@
 
 #import "newflashcard.h"
 #import "RadioButton.h"
+#import "HttpRequest.h"
+#import "DateStr.h"
+
 @interface newflashcard ()
 
 @end
@@ -61,7 +64,6 @@
     label3.text = @"非公開";
     [self.view addSubview:label3];
     [RadioButton addObserverForGroupId:@"first group" observer:self];
-
 }
 
 
@@ -77,22 +79,63 @@
     //UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flashcard"];
     //[self presentViewController:viewController animated:YES completion:nil];
     [self.navigationController pushViewController:viewController animated:YES];
-
 }
 - (IBAction)to_choice_word:(id)sender {
     UIViewController *viewController = nil;
     
     viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"choice_word"];
     [self.navigationController pushViewController:viewController animated:YES];
-    
-    
-    
 }
 
 - (IBAction)makeflashcard:(id)sender {
     UIViewController *viewController = nil;
+    
+    // テストデータ
+    NSString *name = @"単語帳1";
+    NSString *intro = @"単語帳1の説明";
+    NSString *master = @"userid";
+    NSArray *groopArray = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
+    NSData *jsonGroopData = [NSJSONSerialization dataWithJSONObject:groopArray options:kNilOptions error:nil];
+    NSString *groopStr= [[NSString alloc] initWithData:jsonGroopData encoding:NSUTF8StringEncoding];
+    NSNumber *level = [NSNumber numberWithInt:1];
+    NSString *levelStr = [level stringValue];
+    NSString *date = [DateStr getDate];
+    NSMutableArray *words = [NSMutableArray array];
+    NSDictionary *word1 = [NSDictionary dictionaryWithObjectsAndKeys:@"improve",@"eng",@"を向上させる；よくなる",@"jap",nil];
+    NSDictionary *word2 = [NSDictionary dictionaryWithObjectsAndKeys:@"relate",@"eng",@"を関連づける",@"jap",nil];
+    NSDictionary *word3 = [NSDictionary dictionaryWithObjectsAndKeys:@"provide",@"eng",@"を供給する",@"jap",nil];
+    NSDictionary *word4 = [NSDictionary dictionaryWithObjectsAndKeys:@"consider",@"eng",@"を見なす、考える",@"jap",nil];
+    NSDictionary *word5 = [NSDictionary dictionaryWithObjectsAndKeys:@"include",@"eng",@"を含む",@"jap",nil];
+    NSDictionary *word6 = [NSDictionary dictionaryWithObjectsAndKeys:@"concern",@"eng",@"心配する",@"jap",nil];
+    [words addObject:word1];
+    [words addObject:word2];
+    [words addObject:word3];
+    [words addObject:word4];
+    [words addObject:word5];
+    [words addObject:word6];
+    NSData *jsonWordData = [NSJSONSerialization dataWithJSONObject:words options:kNilOptions error:nil];
+    NSString *wordsStr= [[NSString alloc] initWithData:jsonWordData encoding:NSUTF8StringEncoding];
+    
+    // 作成した単語帳をローカルに保存&サーバーに保存
+    HttpRequest *http = [[HttpRequest alloc] init];
+    [http setRoot:@"/createFlashcard"];
+    [http addKey:@"name" andValue:name];
+    [http addKey:@"intro" andValue:intro];
+    [http addKey:@"master" andValue:master];
+    [http addKey:@"groop" andValue:groopStr];
+    [http addKey:@"level" andValue:levelStr];
+    [http addKey:@"date" andValue:date];
+    [http addKey:@"words" andValue:wordsStr];
+    
+    [http sendPost];
+    
+    NSDictionary *result = [http getResult];
+    
+    if([[result objectForKey:@"error"] boolValue]){
+        NSLog(@"通信エラー？");
+        return;
+    }
     viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
-    //[self presentViewController:viewController animated:YES completion:nil];
     [self.navigationController pushViewController:viewController animated:YES];
     
 }
@@ -112,5 +155,6 @@
     //if up     select  then index=0
     //if center select  then index=1
 }
+
 
 @end

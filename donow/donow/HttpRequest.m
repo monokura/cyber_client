@@ -26,7 +26,7 @@
 -(void)addKey:(NSString *)key andValue:(NSString *)value
 {
     [query setObject:value forKey:key];
-    }
+}
 
 -(NSString *)makeUriGet{
     NSMutableString *tmp = [NSMutableString stringWithString:url];
@@ -40,7 +40,7 @@
             [delimiter setString:@"&"];
         }
     }
-    NSLog(@"Url : %@", tmp);
+    NSLog(@"Get Url : %@", tmp);
     return tmp;
 }
 
@@ -65,6 +65,49 @@
                   nil];
     }
     
+}
+
+-(void)sendPost
+{
+    /* POST */
+    NSString *keyValue = [NSString stringWithFormat:[self makeKeyPost]];
+    NSData *post = [keyValue dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:[url stringByAppendingString:root]]];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:post];
+
+    NSData *json_raw_data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    
+    
+    // JSONをNSDictionaryに変換
+    // Todo : 配列が飛んでくると死ぬ(*ﾟ∀ﾟ)
+    if(json_raw_data != nil){
+        NSError *error=nil;
+        result = [NSJSONSerialization JSONObjectWithData:json_raw_data options:NSJSONReadingAllowFragments error:&error];
+    }else{
+        // 通信エラー
+        result = [NSDictionary dictionaryWithObjectsAndKeys:
+                  [NSNumber numberWithBool:YES] , @"error",
+                  @"通信エラー" , @"message",
+                  nil];
+    }
+}
+
+-(NSString *)makeKeyPost
+{
+    NSMutableString *tmp = [[NSMutableString alloc] init];
+    if([query count] > 0){
+        NSMutableString *delimiter = [NSMutableString stringWithString:@""];
+        for(NSString *key in [query keyEnumerator]){
+            [tmp setString:[[[[tmp stringByAppendingString:delimiter] stringByAppendingString:key] stringByAppendingString:@"="] stringByAppendingString:[query objectForKey:key]]];
+            [delimiter setString:@"&"];
+        }
+    }
+    NSLog(@"Post Key : %@", tmp);
+    //NSString *tmp1 = [tmp stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    //NSString *tmp2 = [tmp1 stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return tmp;
 }
 
 -(NSDictionary *)getResult

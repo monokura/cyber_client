@@ -23,4 +23,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *textf_detail;
 - (IBAction)backgroundpush:(id)sender;
 
+
 @end
