@@ -30,6 +30,7 @@
 		43886A3317E037D200DD4AEE /* RadioButton-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 43886A3117E037D200DD4AEE /* RadioButton-Selected.png */; };
 		43886A3417E037D200DD4AEE /* RadioButton-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 43886A3217E037D200DD4AEE /* RadioButton-Unselected.png */; };
 		43886A3717E038CC00DD4AEE /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 43886A3617E038CC00DD4AEE /* RadioButton.m */; };
+		43A4576117E19D1F00B3F406 /* select_word.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A4576017E19D1F00B3F406 /* select_word.m */; };
 		43C680B617E14D1000ED4729 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C680B417E14D1000ED4729 /* CustomCell.m */; };
 		43C680B717E14D1000ED4729 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43C680B517E14D1000ED4729 /* CustomCell.xib */; };
 		43C680B917E14D2B00ED4729 /* flashcard.png in Resources */ = {isa = PBXBuildFile; fileRef = 43C680B817E14D2B00ED4729 /* flashcard.png */; };
@@ -96,6 +97,8 @@
 		43886A3217E037D200DD4AEE /* RadioButton-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButton-Unselected.png"; sourceTree = "<group>"; };
 		43886A3517E038CC00DD4AEE /* RadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioButton.h; sourceTree = "<group>"; };
 		43886A3617E038CC00DD4AEE /* RadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioButton.m; sourceTree = "<group>"; };
+		43A4575F17E19D1E00B3F406 /* select_word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = select_word.h; sourceTree = "<group>"; };
+		43A4576017E19D1F00B3F406 /* select_word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = select_word.m; sourceTree = "<group>"; };
 		43C680B317E14D1000ED4729 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		43C680B417E14D1000ED4729 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		43C680B517E14D1000ED4729 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 				436E145B17DD704600223D66 /* flashcard.m */,
 				436E144D17DD57F600223D66 /* choice_word.h */,
 				436E144E17DD57F600223D66 /* choice_word.m */,
+				43A4575F17E19D1E00B3F406 /* select_word.h */,
+				43A4576017E19D1F00B3F406 /* select_word.m */,
 				4358606B17DC4F270026D7A2 /* choice_group.h */,
 				4358606C17DC4F270026D7A2 /* choice_group.m */,
 				431BDC7917DB034E00937886 /* newflashcard.h */,
@@ -417,6 +422,7 @@
 				C3D2792317E0DC100035C917 /* DateStr.m in Sources */,
 				43C680B617E14D1000ED4729 /* CustomCell.m in Sources */,
 				43C680BC17E1506700ED4729 /* firstscene.m in Sources */,
+				43A4576117E19D1F00B3F406 /* select_word.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
