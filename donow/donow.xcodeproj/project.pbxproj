@@ -20,7 +20,6 @@
 		436E144F17DD57F600223D66 /* choice_word.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E144E17DD57F600223D66 /* choice_word.m */; };
 		436E145217DD6C7200223D66 /* 127.gif in Resources */ = {isa = PBXBuildFile; fileRef = 436E145017DD6C7200223D66 /* 127.gif */; };
 		436E145317DD6C7200223D66 /* 136.gif in Resources */ = {isa = PBXBuildFile; fileRef = 436E145117DD6C7200223D66 /* 136.gif */; };
-		436E145C17DD704600223D66 /* flashcard.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E145B17DD704600223D66 /* flashcard.m */; };
 		436E145F17DD827A00223D66 /* flashcard_setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E145E17DD827A00223D66 /* flashcard_setting.m */; };
 		436E147417DDAE5100223D66 /* edit_flashcard.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E147317DDAE5100223D66 /* edit_flashcard.m */; };
 		436E147717DDB22F00223D66 /* newgroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 436E147617DDB22F00223D66 /* newgroup.m */; };
@@ -57,6 +56,8 @@
 		C3E094B917D9E89100E7EB94 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E094B817D9E89100E7EB94 /* Default@2x.png */; };
 		C3E094BB17D9E89100E7EB94 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E094BA17D9E89100E7EB94 /* Default-568h@2x.png */; };
 		C3E094BE17D9E89100E7EB94 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E094BC17D9E89100E7EB94 /* MainStoryboard_iPhone.storyboard */; };
+		C3E854B217E22A0500A1F089 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E854B117E22A0500A1F089 /* logo.png */; };
+		C3E854B417E22B9600A1F089 /* guratan.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E854B317E22B9600A1F089 /* guratan.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,8 +81,6 @@
 		436E144E17DD57F600223D66 /* choice_word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = choice_word.m; sourceTree = "<group>"; };
 		436E145017DD6C7200223D66 /* 127.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 127.gif; sourceTree = "<group>"; };
 		436E145117DD6C7200223D66 /* 136.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 136.gif; sourceTree = "<group>"; };
-		436E145A17DD704500223D66 /* flashcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flashcard.h; sourceTree = "<group>"; };
-		436E145B17DD704600223D66 /* flashcard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = flashcard.m; sourceTree = "<group>"; };
 		436E145D17DD827A00223D66 /* flashcard_setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flashcard_setting.h; sourceTree = "<group>"; };
 		436E145E17DD827A00223D66 /* flashcard_setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = flashcard_setting.m; sourceTree = "<group>"; };
 		436E147217DDAE5100223D66 /* edit_flashcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = edit_flashcard.h; sourceTree = "<group>"; };
@@ -116,8 +115,6 @@
 		43F0CA8A17DDCE6E00B13C26 /* search_group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = search_group.h; sourceTree = "<group>"; };
 		43F0CA8B17DDCE6E00B13C26 /* search_group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = search_group.m; sourceTree = "<group>"; };
 		43F0CA8C17DDCE6E00B13C26 /* search_group.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = search_group.xib; sourceTree = "<group>"; };
-		43F0CA8F17DDD31C00B13C26 /* Candy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Candy.h; sourceTree = "<group>"; };
-		43F0CA9017DDD31C00B13C26 /* Candy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Candy.m; sourceTree = "<group>"; };
 		43F0CA9117DDD37900B13C26 /* group_database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = group_database.h; sourceTree = "<group>"; };
 		43F0CA9217DDD37900B13C26 /* group_database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = group_database.m; sourceTree = "<group>"; };
 		43F0CA9417DE9C6500B13C26 /* check_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_off.png; sourceTree = "<group>"; };
@@ -142,6 +139,8 @@
 		C3E094B817D9E89100E7EB94 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		C3E094BA17D9E89100E7EB94 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C3E094BD17D9E89100E7EB94 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		C3E854B117E22A0500A1F089 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		C3E854B317E22B9600A1F089 /* guratan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guratan.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,8 +171,6 @@
 				43C680B517E14D1000ED4729 /* CustomCell.xib */,
 				436E145D17DD827A00223D66 /* flashcard_setting.h */,
 				436E145E17DD827A00223D66 /* flashcard_setting.m */,
-				436E145A17DD704500223D66 /* flashcard.h */,
-				436E145B17DD704600223D66 /* flashcard.m */,
 				436E144D17DD57F600223D66 /* choice_word.h */,
 				436E144E17DD57F600223D66 /* choice_word.m */,
 				43A4575F17E19D1E00B3F406 /* select_word.h */,
@@ -193,8 +190,6 @@
 		436E146A17DD953100223D66 /* group */ = {
 			isa = PBXGroup;
 			children = (
-				43F0CA8F17DDD31C00B13C26 /* Candy.h */,
-				43F0CA9017DDD31C00B13C26 /* Candy.m */,
 				43F0CA8A17DDCE6E00B13C26 /* search_group.h */,
 				43F0CA8B17DDCE6E00B13C26 /* search_group.m */,
 				43F0CA9117DDD37900B13C26 /* group_database.h */,
@@ -215,6 +210,8 @@
 		436E146B17DD955600223D66 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				C3E854B317E22B9600A1F089 /* guratan.png */,
+				C3E854B117E22A0500A1F089 /* logo.png */,
 				43C680BD17E1507600ED4729 /* first_scene.png */,
 				430D49FD17E1D3380047A4B8 /* blackboard.png */,
 				43C680B817E14D2B00ED4729 /* flashcard.png */,
@@ -305,8 +302,6 @@
 				436E146A17DD953100223D66 /* group */,
 				436E146B17DD955600223D66 /* image */,
 				C3E094AB17D9E89100E7EB94 /* Supporting Files */,
-				C3D2792117E0DC100035C917 /* DateStr.h */,
-				C3D2792217E0DC100035C917 /* DateStr.m */,
 			);
 			path = donow;
 			sourceTree = "<group>";
@@ -314,6 +309,8 @@
 		C3E094AB17D9E89100E7EB94 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C3D2792117E0DC100035C917 /* DateStr.h */,
+				C3D2792217E0DC100035C917 /* DateStr.m */,
 				43886A3517E038CC00DD4AEE /* RadioButton.h */,
 				43886A3617E038CC00DD4AEE /* RadioButton.m */,
 				C3E094AC17D9E89100E7EB94 /* donow-Info.plist */,
@@ -395,6 +392,8 @@
 				43C680B917E14D2B00ED4729 /* flashcard.png in Resources */,
 				43C680BE17E1507600ED4729 /* first_scene.png in Resources */,
 				430D49FE17E1D3380047A4B8 /* blackboard.png in Resources */,
+				C3E854B217E22A0500A1F089 /* logo.png in Resources */,
+				C3E854B417E22B9600A1F089 /* guratan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +412,6 @@
 				431BDC7C17DB034E00937886 /* newflashcard.m in Sources */,
 				4358606D17DC4F270026D7A2 /* choice_group.m in Sources */,
 				436E144F17DD57F600223D66 /* choice_word.m in Sources */,
-				436E145C17DD704600223D66 /* flashcard.m in Sources */,
 				436E145F17DD827A00223D66 /* flashcard_setting.m in Sources */,
 				436E147417DDAE5100223D66 /* edit_flashcard.m in Sources */,
 				436E147717DDB22F00223D66 /* newgroup.m in Sources */,
