@@ -18,4 +18,5 @@
 - (IBAction)backgroundTapped:(id)sender;
 - (IBAction)regist_user:(id)sender;
 - (void)saveFile;
+- (void)saveFlashcard:(NSArray *)flashcards;
 @end

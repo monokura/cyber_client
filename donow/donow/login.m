@@ -24,7 +24,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -32,7 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //0912追加
     UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blackboard.png"]];
     backgroundImage.frame = CGRectMake(0, 0, 480, 480);
     [self.view addSubview:backgroundImage];
@@ -44,7 +42,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)backgroundTapped:(id)sender {
@@ -84,6 +81,11 @@
         //共有
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         appDelegate.userid = [result objectForKey:(@"name")];
+        
+        [self saveFile];
+        
+        NSArray *flashcardArray = [result objectForKey:@"flashcards"];
+        [self saveFlashcard:flashcardArray];
         
         UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
         [self presentViewController:viewController animated:YES completion:nil];
@@ -151,5 +153,20 @@
     [str writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
 
+
+-(void)saveFlashcard:(NSArray *)flashcards
+{
+    NSString *str = [flashcards description];
+    // 保存先パス設定
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"flashcard.txt"];
+    
+    // ファイルの削除
+    NSError* error;
+    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+    
+    // ファイルに保存
+    [str writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+}
 
 @end
