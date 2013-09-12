@@ -65,7 +65,6 @@
 {
     //配列の要素数だけセルを設定
     return [myflashcard count];
-//    return _rows.count;
 }
 
 - (void)viewWillAppear:(BOOL)animated

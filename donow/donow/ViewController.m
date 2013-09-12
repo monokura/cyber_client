@@ -18,22 +18,14 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
-}
-
-
-//画面を横向きに固定
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //0912追加
     UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blackboard.png"]];
     backgroundImage.frame = CGRectMake(0, 0, 480, 480);
     [self.view addSubview:backgroundImage];
@@ -53,8 +45,6 @@
     _setting.frame = CGRectMake(430, 250, 50, 50);                  //ボタン位置設定
     UIImage *img = [UIImage imageNamed:@"check_off.png"];           //ボタン画像生成
     [_setting setBackgroundImage:img forState:UIControlStateNormal];//画像セット
-    //[_setting setTitle:@"設定" forState:UIControlStateNormal];     //文字入力
-    //[_setting sizeToFit];                                         //サイズ自動調整関数
     [_setting addTarget:self
                action:@selector(button_Tapped:)
        forControlEvents:UIControlEventTouchUpInside];               // ボタンタップ時呼び出しメソッド(button_Tapped)
@@ -101,7 +91,7 @@
     _back =  [UIButton buttonWithType:UIButtonTypeCustom];
     _back.frame = CGRectMake(0, 0, 80, 50);                  //ボタン位置設定
     [_back setBackgroundImage:img forState:UIControlStateNormal];//画像セット
-    [_back setTitle:@"戻る" forState:UIControlStateNormal];     //文字入力
+    [_back setTitle:@"完了" forState:UIControlStateNormal];     //文字入力
     //[_setting sizeToFit];                                         //サイズ自動調整関数
     [_back addTarget:self
                  action:@selector(Tapped_back)
@@ -117,15 +107,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)Tapped_back{
-    NSLog(@"Tapped_back3");
-    
-    UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
-    [self presentViewController:viewController animated:YES completion:nil];
-    NSLog(@"Tapped_back");
-    
-
-    }
 
 @end

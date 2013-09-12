@@ -64,13 +64,12 @@
                   @"通信エラー" , @"message",
                   nil];
     }
-    
 }
 
 -(void)sendPost
 {
     /* POST */
-    NSString *keyValue = [NSString stringWithFormat:[self makeKeyPost]];
+    NSString *keyValue = [NSString stringWithString:[self makeKeyPost]];
     NSData *post = [keyValue dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:[url stringByAppendingString:root]]];
@@ -105,8 +104,6 @@
         }
     }
     NSLog(@"Post Key : %@", tmp);
-    //NSString *tmp1 = [tmp stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    //NSString *tmp2 = [tmp1 stringByReplacingOccurrencesOfString:@" " withString:@""];
     return tmp;
 }
 

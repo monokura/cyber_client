@@ -19,8 +19,8 @@
  // 3,クエリ設定(クエリがないなら飛ばす)
  [http addKey:@"city" andValue:@"400040"];
  // 4,Getでデータ送信
- [http sendGet];
- 
+ GET[http sendGet];
+ POST[http sendPost];
  // 5,結果を取得
  // NSDictionary *hoge = [http getResult];
  
