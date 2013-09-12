@@ -9,26 +9,15 @@
 #import "mypage.h"
 #import "newflashcard.h"
 #import "CustomCell.h"
+#import "HttpRequest.h"
 
 @interface mypage ()
 
 @end
 
 @implementation mypage{
-    NSArray *myflashcard;//セル表示用配列
-    int destination;
-//      IBOutlet  UITableView *_tableView;
-     }
-/*初期コード１/////////////////////////////////////////////
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    NSMutableArray *myflashcard;//セル表示用配列
 }
-*//////////////////////////////////////////////////////////
 
 - (id)init
 {
@@ -44,20 +33,35 @@
     self.navigationItem.leftBarButtonItem = leftButton;
 }
 
-
 - (void)viewDidLoad
 {
     self.navigationItem.title = @"単語帳一覧";
     [self navigatinBarItemMake];
     [self.tableView registerNib:[UINib nibWithNibName:@"CustomCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
+    
+    // サーバーから単語帳データを持ってくる
+    HttpRequest *http = [[HttpRequest alloc] init];
+    [http setRoot:@"/searchUser"];
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [http addKey:@"name" andValue:appDelegate.userid];
+    [http sendGet];
+    NSDictionary *result = [http getResult];
+    NSArray *flashcardArray = [result objectForKey:@"flashcards"];
+    [self saveFlashcard:flashcardArray];
+    
     //セルに表示するテキストを配列に格納
-    myflashcard = [[NSArray alloc]initWithObjects:@"単語帳1",@"単語帳2",@"単語帳3",@"単語帳4",@"単語帳5",@"単語帳6",@"単語帳7",@"単語帳8",@"単語帳9",@"単語帳10",@"単語帳11",@"単語帳12",nil];      //未初期化
-
+    myflashcard = [[NSMutableArray alloc] init];
+    
+    NSArray *flashcards = [self loadFlashcardFile];
+    
+    for(NSDictionary *dic in flashcards){
+        NSLog(@"========%@",[dic objectForKey:@"name"]);
+        [myflashcard addObject:[dic objectForKey:@"name"]];
+    }
     
     //ツールバー右に検索ボタンを追加
     UIBarButtonItem *btn        =[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(clickButton)];
     self.navigationItem.rightBarButtonItem = btn;
-
 }
 
 
@@ -70,7 +74,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 }
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,6 +98,7 @@
   viewController.hidesBottomBarWhenPushed = YES;
   [self.navigationController pushViewController:viewController animated:YES];
 }
+
 - (void)leftButtonPush{
     UIViewController *viewController = nil;
     viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newflashcard"];
@@ -106,6 +110,42 @@
     
     viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"choice_flashcard"];
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+
+- (NSArray *)loadFlashcardFile
+{
+    // ロードするファイルのパスを設定
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"flashcard.txt"];
+    
+    // ファイルマネージャの取得
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    // ファイルが存在すればロードする
+    if([fileManager fileExistsAtPath:path]){
+        NSString *string = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
+        // 読み込んだ値を表示
+        NSMutableArray *arr = [string propertyList];
+        return arr;
+    }
+    
+    return [[NSMutableArray alloc] init];
+}
+
+-(void)saveFlashcard:(NSArray *)flashcards
+{
+    NSString *str = [flashcards description];
+    // 保存先パス設定
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"flashcard.txt"];
+    
+    // ファイルの削除
+    NSError* error;
+    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+    
+    // ファイルに保存
+    [str writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
 
 @end

@@ -10,4 +10,7 @@
 
 @interface mypage : UITableViewController
 
+-(NSMutableArray *)loadFlashcardFile;
+
+- (void)saveFlashcard:(NSArray *)flashcards;
 @end

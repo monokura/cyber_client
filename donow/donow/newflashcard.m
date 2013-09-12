@@ -76,47 +76,38 @@
 - (IBAction)to_choice_group:(id)sender {
     UIViewController *viewController = nil;
     viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"choice_group"];
-    //UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"flashcard"];
-    //[self presentViewController:viewController animated:YES completion:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 }
+
 - (IBAction)to_choice_word:(id)sender {
     UIViewController *viewController = nil;
-    //0912変更
-    //viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"choice_word"];
-
-    viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"select_word"];
+    viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"choice_word"];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (IBAction)makeflashcard:(id)sender {
-    UIViewController *viewController = nil;
-    
-    // テストデータ
-    NSString *name = @"単語帳1";
-    NSString *intro = @"単語帳1の説明";
-    NSString *master = @"userid";
-    NSArray *groopArray = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
-    NSData *jsonGroopData = [NSJSONSerialization dataWithJSONObject:groopArray options:kNilOptions error:nil];
-    NSString *groopStr= [[NSString alloc] initWithData:jsonGroopData encoding:NSUTF8StringEncoding];
+    // データ格納
+    NSString *name = self.textf_flashname.text;
+    NSString *intro = self.textf_detail.text;
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSString *master = appDelegate.userid;
+    NSArray *groupArray = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
+    NSData *jsonGroupData = [NSJSONSerialization dataWithJSONObject:groupArray options:kNilOptions error:nil];
+    NSString *groupStr= [[NSString alloc] initWithData:jsonGroupData encoding:NSUTF8StringEncoding];
     NSNumber *level = [NSNumber numberWithInt:1];
     NSString *levelStr = [level stringValue];
     NSString *date = [DateStr getDate];
     NSMutableArray *words = [NSMutableArray array];
-    NSDictionary *word1 = [NSDictionary dictionaryWithObjectsAndKeys:@"improve",@"eng",@"を向上させる；よくなる",@"jap",nil];
-    NSDictionary *word2 = [NSDictionary dictionaryWithObjectsAndKeys:@"relate",@"eng",@"を関連づける",@"jap",nil];
-    NSDictionary *word3 = [NSDictionary dictionaryWithObjectsAndKeys:@"provide",@"eng",@"を供給する",@"jap",nil];
-    NSDictionary *word4 = [NSDictionary dictionaryWithObjectsAndKeys:@"consider",@"eng",@"を見なす、考える",@"jap",nil];
-    NSDictionary *word5 = [NSDictionary dictionaryWithObjectsAndKeys:@"include",@"eng",@"を含む",@"jap",nil];
-    NSDictionary *word6 = [NSDictionary dictionaryWithObjectsAndKeys:@"concern",@"eng",@"心配する",@"jap",nil];
-    [words addObject:word1];
-    [words addObject:word2];
-    [words addObject:word3];
-    [words addObject:word4];
-    [words addObject:word5];
-    [words addObject:word6];
+    
+    for(Word *w in appDelegate.temp_wordList){
+        NSDictionary *word = [NSDictionary dictionaryWithObjectsAndKeys:[w eng],@"eng",[w jap],@"jap", nil];
+        [words addObject:word];
+    }
+    appDelegate.temp_wordList = [[NSMutableArray alloc] init];
+    
     NSData *jsonWordData = [NSJSONSerialization dataWithJSONObject:words options:kNilOptions error:nil];
     NSString *wordsStr= [[NSString alloc] initWithData:jsonWordData encoding:NSUTF8StringEncoding];
+    NSString *flashcardid = [name stringByAppendingString:date];
     
     // 作成した単語帳をローカルに保存&サーバーに保存
     HttpRequest *http = [[HttpRequest alloc] init];
@@ -124,7 +115,7 @@
     [http addKey:@"name" andValue:name];
     [http addKey:@"intro" andValue:intro];
     [http addKey:@"master" andValue:master];
-    [http addKey:@"groop" andValue:groopStr];
+    [http addKey:@"group" andValue:groupStr];
     [http addKey:@"level" andValue:levelStr];
     [http addKey:@"date" andValue:date];
     [http addKey:@"words" andValue:wordsStr];
@@ -132,13 +123,28 @@
     [http sendPost];
     
     NSDictionary *result = [http getResult];
-    /*
+    
     if([[result objectForKey:@"error"] boolValue]){
-        NSLog(@"通信エラー？");
+        NSString *mes = [result objectForKey:@"message"];
+        NSLog(@"%@", [result objectForKey:mes]);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"登録失敗" message:mes delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alert show];
         return;
     }
-     */
-    //0912追加
+    
+    // 保存するためのディクショナリ作成
+    NSMutableDictionary *file = [NSMutableDictionary dictionary];
+    [file setObject:name forKey:@"name"];
+    [file setObject:intro forKey:@"intro"];
+    [file setObject:flashcardid forKey:@"id"];
+    [file setObject:master forKey:@"master"];
+    [file setObject:level forKey:@"level"];
+    [file setObject:date forKey:@"date"];
+    [file setObject:words forKey:@"words"];
+
+    // ローカルにファイルを保存
+    [self saveFile:file toFile:flashcardid];
+    
     //一つ前の画面へ遷移
     UIViewController *Controller = [[UIViewController alloc] init];
     Controller = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
@@ -163,5 +169,18 @@
     //if center select  then index=1
 }
 
+- (void)saveFile:(NSDictionary *)data toFile:(NSString *)filename
+{
+    NSString *txtFilename = [filename stringByAppendingString:@".txt"];
+    // 保存先パス設定
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:txtFilename];
+    
+    // 文字列に変換
+    NSString *str = [data description];
+    
+    // ファイルに保存
+    [str writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+}
 
 @end

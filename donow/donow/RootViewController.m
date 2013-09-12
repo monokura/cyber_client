@@ -26,7 +26,8 @@
     self.pageViewController.delegate = self;
     
     _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:@{@"UIPageViewControllerOptionSpineLocationKey" : [NSNumber numberWithInt:UIPageViewControllerSpineLocationMid]}];
-    _pageViewController.view.frame = CGRectMake(10, 80, 300, 240);//（左上ｘ軸、左上y軸、縦、横）
+    //_pageViewController.view.frame = CGRectMake(10, 80, 300, 240);//（左上ｘ軸、左上y軸、縦、横）
+    _pageViewController.view.frame = CGRectMake(10, 40, 300, 300);//（左上ｘ軸、左上y軸、縦、横）
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     DataViewController *startingViewController = [self.modelController viewControllerAtIndex:0 storyboard:storyboard];

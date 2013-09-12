@@ -84,8 +84,6 @@
         
         [self saveFile];
         
-        NSArray *flashcardArray = [result objectForKey:@"flashcards"];
-        [self saveFlashcard:flashcardArray];
         
         UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
         [self presentViewController:viewController animated:YES completion:nil];
@@ -153,20 +151,5 @@
     [str writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
 
-
--(void)saveFlashcard:(NSArray *)flashcards
-{
-    NSString *str = [flashcards description];
-    // 保存先パス設定
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"flashcard.txt"];
-    
-    // ファイルの削除
-    NSError* error;
-    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
-    
-    // ファイルに保存
-    [str writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL];
-}
 
 @end

@@ -17,7 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _dataLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,10,200,30)];
+    _dataLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,10,200,86)];
     _dataLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_dataLabel];
 }
