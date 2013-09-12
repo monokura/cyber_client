@@ -17,6 +17,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _dataLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,10,200,30)];
+    _dataLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:_dataLabel];
     //ring_view
     //   _ring_view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"view2.png"]];           //rootview背景
     //画像リサイズコード///////////////////////////////////

@@ -16,8 +16,10 @@
 
 @implementation choice_word{
     NSArray *wordlist;//セル表示用配列
-}
+    NSMutableArray *temp_filterWordList_;
 
+}
+@synthesize temp_wordList = temp_wordList_;
 /////////////////////////////////////////////
 
 - (id)init
@@ -67,8 +69,22 @@
 
 
 - (void)rightButtonPush{
-    NSLog(@"doya");
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
+    appDelegate.temp_wordList = nil;
+    appDelegate.temp_wordList = [[NSMutableArray alloc] init];
+  
+    for(Word *word in wordList){
+     if([word getCheck] == 1){
+            Word *w = [[Word alloc] init];
+            [w setEng: [word eng]];
+            [w setJap: [word jap]];
+            [w setCheck:YES];
+            [w setIndex:[word getIndex]];
+            [appDelegate.temp_wordList addObject:w];
+        }
+    
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -269,6 +285,13 @@
             // 配列に追加
             [wordList addObject:[Word setEng:eng andJap:jap andIndex:counter]];
             counter++;
+        }
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+        if([appDelegate.temp_wordList count] != 0){
+            for(Word *w in appDelegate.temp_wordList){
+                [[wordList objectAtIndex:[w getIndex]] setCheck:YES];
+            }
         }
     }else{
         // ファイルがないときの処理

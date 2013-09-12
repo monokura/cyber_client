@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Word.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
     NSString *userid;
+    NSMutableArray *temp_wordList;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic) NSString *userid;
+@property (nonatomic) NSMutableArray *temp_wordList;
 @end

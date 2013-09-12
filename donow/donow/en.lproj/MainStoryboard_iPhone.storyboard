@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
+        <!--Firstscene-->
+        <scene sceneID="OoG-ap-jgy">
+            <objects>
+                <viewController id="HQg-cy-OBV" customClass="firstscene" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oTP-kJ-8O6">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="first_scene.png" id="J99-dJ-AZN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ロード中" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cyW-fm-uGX">
+                                <rect key="frame" x="102" y="94" width="117" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QGh-DZ-Mfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-487" y="569"/>
+        </scene>
         <!--Login-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="login" sceneMemberID="viewController">
+                <viewController restorationIdentifier="login" storyboardIdentifier="login" id="2" customClass="login" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3" customClass="UIControl">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -177,31 +202,6 @@
             </objects>
             <point key="canvasLocation" x="1373" y="1157"/>
         </scene>
-        <!--Group information-->
-        <scene sceneID="MgY-Rr-run">
-            <objects>
-                <tableViewController storyboardIdentifier="group_information" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UsX-WE-Yat" customClass="group_information" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="7hf-fq-Coy">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="70c-XQ-rOe">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DUa-3a-F8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1889" y="1408"/>
-        </scene>
         <!--Search group-->
         <scene sceneID="6Z6-0C-gYp">
             <objects>
@@ -212,12 +212,10 @@
                         <subviews>
                             <searchBar contentMode="redraw" id="U4z-dm-EVE">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4do-On-9TX">
                                 <rect key="frame" x="0.0" y="44" width="320" height="416"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Cell" id="E1m-sl-vLX">
@@ -842,34 +840,118 @@
                     <view key="view" contentMode="scaleToFill" id="nEi-U5-wFz">
                         <rect key="frame" x="0.0" y="20" width="480" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="0OP-BG-FIM">
-                                <rect key="frame" x="8" y="12" width="552" height="280"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="Gin-dp-uq0">
-                                        <rect key="frame" x="0.0" y="111" width="552" height="58"/>
-                                        <fontDescription key="fontDescription" type="system" size="system"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" red="0.97826086960000003" green="0.91848131079999995" blue="0.73914263440000005" alpha="1" colorSpace="calibratedRGB"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <outlet property="dataLabel" destination="Gin-dp-uq0" id="UEL-wm-wNb"/>
-                        <outlet property="ring_view" destination="0OP-BG-FIM" id="L1g-UM-l6M"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G5t-v4-i9b" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1318" y="-709"/>
+            <point key="canvasLocation" x="1278" y="-687"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="first_scene.png" width="320" height="460"/>
+    </resources>
+    <classes>
+        <class className="DataViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DataViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ring_view" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+        </class>
+        <class className="choice_group" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/choice_group.h"/>
+        </class>
+        <class className="choice_word" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/choice_word.h"/>
+        </class>
+        <class className="edit_flashcard" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/edit_flashcard.h"/>
+            <relationships>
+                <relationship kind="action" name="choice_word:"/>
+                <relationship kind="action" name="finish_edit:"/>
+            </relationships>
+        </class>
+        <class className="firstscene" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/firstscene.h"/>
+        </class>
+        <class className="flashcard" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/flashcard.h"/>
+            <relationships>
+                <relationship kind="action" name="to_setting:"/>
+            </relationships>
+        </class>
+        <class className="flashcard_setting" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/flashcard_setting.h"/>
+            <relationships>
+                <relationship kind="action" name="delete_card:"/>
+                <relationship kind="action" name="edit_flashcard:"/>
+                <relationship kind="action" name="remove_card:"/>
+            </relationships>
+        </class>
+        <class className="group" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/group.h"/>
+        </class>
+        <class className="login" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/login.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTapped:"/>
+                <relationship kind="action" name="button_login:" candidateClass="UIButton"/>
+                <relationship kind="action" name="regist_user:"/>
+                <relationship kind="outlet" name="PageOutline" candidateClass="UIControl"/>
+                <relationship kind="outlet" name="TextBoxId" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="TextBoxPass" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="mypage" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mypage.h"/>
+        </class>
+        <class className="newflashcard" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/newflashcard.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundpush:"/>
+                <relationship kind="action" name="makeflashcard:"/>
+                <relationship kind="action" name="to_choice_group:"/>
+                <relationship kind="action" name="to_choice_word:"/>
+                <relationship kind="outlet" name="flashcard_name" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="grouplabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="labeluser" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="navigationbar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="navigationitem" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="textf_detail" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="textf_flashname" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="newgroup" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/newgroup.h"/>
+            <relationships>
+                <relationship kind="action" name="regist_group:"/>
+            </relationships>
+        </class>
+        <class className="regist_user" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/regist_user.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTapped:"/>
+                <relationship kind="action" name="registerButtonPushed:"/>
+                <relationship kind="outlet" name="TextBoxID" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="TextBoxPass1" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="TextBoxPass2" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="search_group" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/search_group.h"/>
+            <relationships>
+                <relationship kind="action" name="goToSearch:"/>
+                <relationship kind="outlet" name="serchbar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

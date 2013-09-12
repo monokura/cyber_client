@@ -11,8 +11,8 @@
 @class DataViewController;
 
 @interface ModelController : NSObject <UIPageViewControllerDataSource>
+//{NSMutableArray *pageData;}
 
 - (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard;
 - (NSUInteger)indexOfViewController:(DataViewController *)viewController;
-
 @end

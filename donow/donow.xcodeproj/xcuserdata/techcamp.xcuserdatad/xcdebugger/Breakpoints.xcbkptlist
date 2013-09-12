@@ -7,13 +7,26 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "donow/mypage.m"
-         timestampString = "400568341.833477"
+         filePath = "donow/choice_word.m"
+         timestampString = "400660646.159334"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "78"
-         endingLineNumber = "78"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
+         landmarkName = "-rightButtonPush"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "donow/choice_word.m"
+         timestampString = "400661164.491495"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
+         landmarkName = "-rightButtonPush"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

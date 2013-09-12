@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
 @property (strong, nonatomic) id dataObject;
-@property (nonatomic, strong) UIViewController *ring;
+//@property (nonatomic, strong) UIViewControrller *ring;
 @property (weak, nonatomic) IBOutlet UIView *ring_view;
 
 

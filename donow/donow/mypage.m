@@ -8,6 +8,7 @@
 
 #import "mypage.h"
 #import "newflashcard.h"
+#import "CustomCell.h"
 
 @interface mypage ()
 
@@ -38,14 +39,19 @@
     return self;
 }
 
-
+- (void)navigatinBarItemMake{
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"新規" style:101 target:self action:@selector(rightButtonPush)];
+    self.navigationItem.rightBarButtonItem = rightButton;
+}
 
 
 - (void)viewDidLoad
 {
     self.navigationItem.title = @"単語帳一覧";
+    [self navigatinBarItemMake];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CustomCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     //セルに表示するテキストを配列に格納
-    myflashcard = [[NSArray alloc]initWithObjects:@"新規作成",@"単語帳1",@"単語帳2",@"単語帳3",@"単語帳4",@"単語帳5",@"単語帳6",@"単語帳7",@"単語帳8",@"単語帳9",@"単語帳10",@"単語帳11",@"単語帳12",nil];      //未初期化
+    myflashcard = [[NSArray alloc]initWithObjects:@"単語帳1",@"単語帳2",@"単語帳3",@"単語帳4",@"単語帳5",@"単語帳6",@"単語帳7",@"単語帳8",@"単語帳9",@"単語帳10",@"単語帳11",@"単語帳12",nil];      //未初期化
 }
 
 
@@ -64,37 +70,31 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;   //セルの右側に"＞"をつける
-        
-    }
-    
-    cell.textLabel.text = [myflashcard objectAtIndex:indexPath.row];
-    
+    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.bodyLabel.text = [myflashcard objectAtIndex:indexPath.row];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title = [myflashcard objectAtIndex:indexPath.row];
-    UIViewController *viewController = nil;
-    
-    if([title isEqualToString:@"新規作成"])
-    {
-        viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newflashcard"];
-        [self.navigationController pushViewController:viewController animated:YES];
-    }else{
-        viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-        NSLog(@"%@", viewController);
-        [self presentViewController:viewController animated:YES completion:nil];
-        //[self.navigationController pushViewController:viewController animated:YES];
-
-    }
+    NSLog(@"indexpath is %@",indexPath);
+  UIViewController *viewController = [[UIViewController alloc]init];
+  viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+  viewController.hidesBottomBarWhenPushed = YES;
+  [self.navigationController pushViewController:viewController animated:YES];
 }
+- (void)rightButtonPush{
+    UIViewController *viewController = nil;
+    viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newflashcard"];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 
 @end

@@ -18,6 +18,7 @@
     NSMutableArray *filteredWordList;
     ////////////////////////////////////
 }
+@property (readwrite)NSMutableArray *temp_wordList;
 
 - (void)loadFile;
 - (void)saveFile;
