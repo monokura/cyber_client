@@ -39,13 +39,9 @@
 - (IBAction)remove_card:(id)sender {
 }
 
-
+//削除した場合の処理
 - (IBAction)delete_card:(id)sender {
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];//objectAtIndex:1　で一つ前の画面に戻る
-    
-//    UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
-//   [self.navigationController pushViewController:viewController animated:YES];
-
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];//
 }
 
 - (IBAction)edit_flashcard:(id)sender {

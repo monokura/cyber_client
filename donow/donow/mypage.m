@@ -40,8 +40,8 @@
 }
 
 - (void)navigatinBarItemMake{
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"新規" style:101 target:self action:@selector(rightButtonPush)];
-    self.navigationItem.rightBarButtonItem = rightButton;
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"新規" style:101 target:self action:@selector(leftButtonPush)];
+    self.navigationItem.leftBarButtonItem = leftButton;
 }
 
 
@@ -52,6 +52,12 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"CustomCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     //セルに表示するテキストを配列に格納
     myflashcard = [[NSArray alloc]initWithObjects:@"単語帳1",@"単語帳2",@"単語帳3",@"単語帳4",@"単語帳5",@"単語帳6",@"単語帳7",@"単語帳8",@"単語帳9",@"単語帳10",@"単語帳11",@"単語帳12",nil];      //未初期化
+
+    
+    //ツールバー右に検索ボタンを追加
+    UIBarButtonItem *btn        =[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(clickButton)];
+    self.navigationItem.rightBarButtonItem = btn;
+
 }
 
 
@@ -90,11 +96,17 @@
   viewController.hidesBottomBarWhenPushed = YES;
   [self.navigationController pushViewController:viewController animated:YES];
 }
-- (void)rightButtonPush{
+- (void)leftButtonPush{
     UIViewController *viewController = nil;
     viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newflashcard"];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
+-(void)clickButton{
+    UIViewController *viewController = nil;
+    
+    viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"choice_flashcard"];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 @end

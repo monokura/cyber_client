@@ -85,6 +85,8 @@
         }
     
     }
+    //0912追加
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated

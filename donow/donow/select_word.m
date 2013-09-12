@@ -1,49 +1,3 @@
-////
-////  select_word.m
-////  donow
-////
-////  Created by techcamp on 13/09/12.
-////
-////
-//
-//#import "select_word.h"
-//
-//@interface select_word ()
-//
-//@end
-//
-//@implementation select_word
-//
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self) {
-//        // Custom initialization
-//    }
-//    return self;
-//}
-//
-//- (void)viewDidLoad
-//{
-//    [super viewDidLoad];
-//	// Do any additional setup after loading the view.
-//}
-//
-//- (void)didReceiveMemoryWarning
-//{
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
-//
-//@end
-//
-//  choice_word.m
-//  donow
-//
-//  Created by techcamp on 13/09/09.
-//
-//
-
 #import "select_word.h"
 #import "HttpRequest.h"
 #import "Word.h"
@@ -51,13 +5,17 @@
 @interface select_word ()
 
 @end
-
 @implementation select_word{
     NSArray *wordlist;//セル表示用配列
     NSMutableArray *temp_filterWordList_;
+    UITableView *tableview_;
+    UISearchBar *searchbar_;
     
 }
 @synthesize temp_wordList = temp_wordList_;
+@synthesize tableview = tableview_;
+@synthesize searchbar = searchbar_;
+
 /////////////////////////////////////////////
 
 - (id)init
@@ -85,7 +43,6 @@
     filteredWordList = [NSMutableArray arrayWithCapacity:[wordList count]];
     
     // Reload the table
-    [[self tableView] reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -247,7 +204,7 @@
         [[wordList objectAtIndex:indexPath.row] setCheck:check];
     }
     
-    [self.tableView reloadData];
+    [tableView reloadData];
 }
 
 
@@ -261,7 +218,7 @@
 {
     // Tells the table data source to reload when text changes
     [self filterContentForSearchText:searchString scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+     [[searchbar_ scopeButtonTitles] objectAtIndex:[searchbar_  selectedScopeButtonIndex]]];
     
     // Return YES to cause the search result table view to be reloaded.
     return YES;
@@ -271,8 +228,8 @@
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
 {
     // Tells the table data source to reload when scope bar selection changes
-    [self filterContentForSearchText:[self.searchDisplayController.searchBar text] scope:
-     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    [self filterContentForSearchText:[searchbar_ text] scope:
+     [[searchbar_ scopeButtonTitles] objectAtIndex:searchOption]];
     
     // Return YES to cause the search result table view to be reloaded.
     return YES;

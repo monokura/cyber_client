@@ -16,11 +16,17 @@
     NSMutableArray *myflashcard;//セル表示用配列
 }
 
+- (void)navigatinBarItemMake{
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"新規" style:101 target:self action:@selector(leftButtonPush)];
+    self.navigationItem.leftBarButtonItem = leftButton;
+}
+
+
 - (void)viewDidLoad
 {
-    //セルに表示するテキストを配列に格納
-    myflashcard = [[NSMutableArray alloc] init];      //未初期化
-    [myflashcard addObject:@"新規グループ作成"];
+    myflashcard = [[NSMutableArray alloc] init];
+    self.navigationItem.title = @"グループ一覧";
+    [self navigatinBarItemMake];
     for(int i = 1; i < 4;i++){
         NSString *tmp = @"グループ";
         [myflashcard addObject:[tmp stringByAppendingString:[NSString stringWithFormat:@"%d", i]]];
@@ -54,18 +60,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title = [myflashcard objectAtIndex:indexPath.row];
-    
-    if([title isEqualToString:@"新規グループ作成"])
-    {
-        UIViewController *viewController = nil;
-        viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newgroup"];
-        [self.navigationController pushViewController:viewController animated:YES];
-    }else{
         UITableViewController *viewController = nil;
         viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"group_information"];
         [self.navigationController pushViewController:viewController animated:YES];
-    }
 }
 
 -(void)clickButton{
@@ -74,4 +71,10 @@
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
+
+-(void)leftButtonPush{
+    UIViewController *viewController = nil;
+    viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newgroup"];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 @end

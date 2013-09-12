@@ -27,11 +27,11 @@
 {
     [super viewDidLoad];
     //アプリ起動直後にメソッド呼び出し
-    /*[[NSNotificationCenter defaultCenter] addObserver:self
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(myFunction)
                                                  name:UIApplicationDidFinishLaunchingNotification
                                                object:nil];
-*/
+
      }
 
 - (void)didReceiveMemoryWarning

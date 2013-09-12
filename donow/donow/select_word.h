@@ -25,7 +25,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface select_word : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate, UIAlertViewDelegate>
+@interface select_word : UIViewController <UISearchBarDelegate, UISearchDisplayDelegate, UIAlertViewDelegate,UITableViewDelegate>
 {
     //tableにチェックボックスを作成するための変数
 @private
@@ -36,8 +36,8 @@
     ////////////////////////////////////
 }
 @property (readwrite)NSMutableArray *temp_wordList;
-@property (weak, nonatomic) IBOutlet UISearchBar *serchbar;
-@property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchbar;
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
 
 - (void)loadFile;
 - (void)saveFile;

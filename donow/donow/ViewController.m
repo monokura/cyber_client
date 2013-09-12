@@ -23,11 +23,21 @@
     return self;
 }
 
+
+//画面を横向きに固定
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];               //view背景
+    //0912追加
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blackboard.png"]];
+    backgroundImage.frame = CGRectMake(0, 0, 480, 480);
+    [self.view addSubview:backgroundImage];
+
     UIImage *check_off = [UIImage imageNamed:@"check_off.png"];     //ボタン画像生成
     UIImage *check_on = [UIImage imageNamed:@"check_on.png"];       //ボタン画像生成
     
@@ -85,20 +95,11 @@
     _flashcardname.text = @"単語帳";
     [self.view addSubview:_flashcardname];                            // settingをviewに追加
     [self.view sendSubviewToBack:_flashcardname];                     //ボタンを最背面に表示
-    /* [_right_button setBackgroundImage:check_off
-                             forState:UIControlStateNormal];         //画像セット
-    [_right_button sizeToFit];                                       //サイズ自動調整関数
-    [_right_button addTarget:self
-                      action:@selector(button_Tapped:)
-            forControlEvents:UIControlEventTouchUpInside];               // ボタンタップ時呼び出しメソッド(button_Tapped)
-    [self.view addSubview:_right_button];                            // settingをviewに追加
-    [self.view sendSubviewToBack:_right_button];                     //ボタンを最背面に表示
-   */ ///////////////////////////////////////////////
+    ///////////////////////////////////////////////
     
     //setting_button/////////////////////////////
     _back =  [UIButton buttonWithType:UIButtonTypeCustom];
     _back.frame = CGRectMake(0, 0, 80, 50);                  //ボタン位置設定
-  //  UIImage *img = [UIImage imageNamed:@"check_off.png"];           //ボタン画像生成
     [_back setBackgroundImage:img forState:UIControlStateNormal];//画像セット
     [_back setTitle:@"戻る" forState:UIControlStateNormal];     //文字入力
     //[_setting sizeToFit];                                         //サイズ自動調整関数
@@ -109,11 +110,6 @@
     [self.view addSubview:_back];                                // settingをviewに追加
     ///////////////////////////////////////////////
     
-}
-
-- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return ((interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (interfaceOrientation == UIInterfaceOrientationLandscapeRight));
 }
 
 - (void)didReceiveMemoryWarning

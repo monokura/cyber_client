@@ -82,8 +82,10 @@
 }
 - (IBAction)to_choice_word:(id)sender {
     UIViewController *viewController = nil;
-    
-    viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"choice_word"];
+    //0912変更
+    //viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"choice_word"];
+
+    viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"select_word"];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
@@ -130,13 +132,18 @@
     [http sendPost];
     
     NSDictionary *result = [http getResult];
-    
+    /*
     if([[result objectForKey:@"error"] boolValue]){
         NSLog(@"通信エラー？");
         return;
     }
-    viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
-    [self.navigationController pushViewController:viewController animated:YES];
+     */
+    //0912追加
+    //一つ前の画面へ遷移
+    UIViewController *Controller = [[UIViewController alloc] init];
+    Controller = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
+    Controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:Controller animated:YES completion:nil];
     
 }
 

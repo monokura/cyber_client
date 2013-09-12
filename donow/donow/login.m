@@ -32,8 +32,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
+    //0912追加
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blackboard.png"]];
+    backgroundImage.frame = CGRectMake(0, 0, 480, 480);
+    [self.view addSubview:backgroundImage];
+    [self.view sendSubviewToBack:backgroundImage];
     self.TextBoxId.delegate = self;
     self.TextBoxPass.delegate = self;
 }
