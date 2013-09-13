@@ -17,7 +17,9 @@
 
 @implementation mypage{
     NSMutableArray *myflashcard;//セル表示用配列
+    NSString *filename_;
 }
+@synthesize filename= filename_;
 
 - (id)init
 {
@@ -94,6 +96,16 @@
 {
     NSLog(@"indexpath is %@",indexPath);
   UIViewController *viewController = [[UIViewController alloc]init];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSArray *flashList = [self loadFlashcardFile];
+    NSLog(@"2222 : %@", [flashList description]);
+    NSLog(@"2222 : %d", indexPath.row);
+    NSLog(@"2222 : %@", [[flashList objectAtIndex:indexPath.row] objectForKey:@"id"]);
+    appDelegate.filename = [[flashList objectAtIndex:indexPath.row] objectForKey:@"id"];
+    
+    NSLog(@"2222 : %@", appDelegate.filename);
+    
   viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
   viewController.hidesBottomBarWhenPushed = YES;
   [self.navigationController pushViewController:viewController animated:YES];

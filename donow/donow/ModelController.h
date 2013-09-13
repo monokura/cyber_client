@@ -15,4 +15,6 @@
 
 - (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard;
 - (NSUInteger)indexOfViewController:(DataViewController *)viewController;
+
+- (NSMutableDictionary *)loadFile:(NSString *)filename;
 @end

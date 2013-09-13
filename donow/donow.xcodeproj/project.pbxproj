@@ -58,6 +58,8 @@
 		C3E094BE17D9E89100E7EB94 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E094BC17D9E89100E7EB94 /* MainStoryboard_iPhone.storyboard */; };
 		C3E854B217E22A0500A1F089 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E854B117E22A0500A1F089 /* logo.png */; };
 		C3E854B417E22B9600A1F089 /* guratan.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E854B317E22B9600A1F089 /* guratan.png */; };
+		C3E854B617E2A4EE00A1F089 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E854B517E2A4EE00A1F089 /* icon2.png */; };
+		C3E854B817E2A58F00A1F089 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = C3E854B717E2A58F00A1F089 /* icon2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +143,8 @@
 		C3E094BD17D9E89100E7EB94 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		C3E854B117E22A0500A1F089 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		C3E854B317E22B9600A1F089 /* guratan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guratan.png; sourceTree = "<group>"; };
+		C3E854B517E2A4EE00A1F089 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
+		C3E854B717E2A58F00A1F089 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +225,7 @@
 				431BDD4217DB178400937886 /* sample2.png */,
 				43F0CA9417DE9C6500B13C26 /* check_off.png */,
 				43F0CA9517DE9C6500B13C26 /* check_on.png */,
+				C3E854B517E2A4EE00A1F089 /* icon2.png */,
 				436E145017DD6C7200223D66 /* 127.gif */,
 				436E145117DD6C7200223D66 /* 136.gif */,
 			);
@@ -265,6 +270,7 @@
 		C3E0949817D9E89100E7EB94 = {
 			isa = PBXGroup;
 			children = (
+				C3E854B717E2A58F00A1F089 /* icon2.png */,
 				431BDD3F17DB170100937886 /* QuartzCore.framework */,
 				C3E094AA17D9E89100E7EB94 /* donow */,
 				C3E094A317D9E89100E7EB94 /* Frameworks */,
@@ -394,6 +400,8 @@
 				430D49FE17E1D3380047A4B8 /* blackboard.png in Resources */,
 				C3E854B217E22A0500A1F089 /* logo.png in Resources */,
 				C3E854B417E22B9600A1F089 /* guratan.png in Resources */,
+				C3E854B617E2A4EE00A1F089 /* icon2.png in Resources */,
+				C3E854B817E2A58F00A1F089 /* icon2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

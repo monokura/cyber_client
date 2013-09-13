@@ -12,7 +12,8 @@
 -(id)init{
     self = [super init];
     if(self != nil){
-        url = @"http://ec2-54-249-8-59.ap-northeast-1.compute.amazonaws.com:3000";
+        //url = @"http://ec2-54-249-8-59.ap-northeast-1.compute.amazonaws.com:3000";
+        url = @"http://localhost:3000";
         root = nil;
         query = [[NSMutableDictionary alloc] init];
     }

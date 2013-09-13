@@ -84,6 +84,28 @@
         
         [self saveFile];
         
+        // 同期通信
+//        HttpRequest *http = [[HttpRequest alloc] init];
+//        [http setRoot:@"/updateData"];
+//        [http addKey:@"name" andValue:id];
+//        [http sendGet];
+//        NSDictionary *res = [http getResult];
+//        NSArray *dataArray = [res objectForKey:@"data"];
+//        NSLog(@"----%@",[dataArray description]);
+//        
+//        for(NSDictionary *dic in dataArray){
+//            // 保存するためのディクショナリ作成
+//            NSMutableDictionary *file = [NSMutableDictionary dictionary];
+//            [file setObject:[dic objectForKey:@"name"] forKey:@"name"];
+//            [file setObject:[dic objectForKey:@"intro"] forKey:@"intro"];
+//            [file setObject:[dic objectForKey:@"id"] forKey:@"id"];
+//            [file setObject:[dic objectForKey:@"master"] forKey:@"master"];
+//            [file setObject:[dic objectForKey:@"level"] forKey:@"level"];
+//            [file setObject:[dic objectForKey:@"update"] forKey:@"date"];
+//            [file setObject:[dic objectForKey:@"words"] forKey:@"words"];
+//             // ローカルにファイルを保存
+//             [self saveFile:file toFile:[dic objectForKey:@"id"]];
+//        }
         
         UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mypage_group"];
         [self presentViewController:viewController animated:YES completion:nil];
@@ -151,5 +173,23 @@
     [str writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
 
+
+- (void)saveFile:(NSDictionary *)data toFile:(NSString *)filename
+{
+    NSString *txtFilename = [filename stringByAppendingString:@".txt"];
+    // 保存先パス設定
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:txtFilename];
+    
+    // 文字列に変換
+    NSString *str = [data description];
+    
+    // ファイルの削除
+    NSError* error;
+    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+    
+    // ファイルに保存
+    [str writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL];
+}
 
 @end

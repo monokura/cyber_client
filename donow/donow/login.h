@@ -18,4 +18,6 @@
 - (IBAction)backgroundTapped:(id)sender;
 - (IBAction)regist_user:(id)sender;
 - (void)saveFile;
+- (void)saveFile:(NSDictionary *)data
+          toFile:(NSString *)filename;
 @end
